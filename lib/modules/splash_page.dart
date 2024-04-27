@@ -15,7 +15,7 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   String routeName = StorageRepository.getBool(Keys.isOnboarding) == true
-      ? 'bottomNavbar'
+      ? 'bottomNavBar'
       : 'onBoarding';
 
   @override
@@ -30,25 +30,20 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Container(
-        // decoration: const BoxDecoration(
-        // image: DecorationImage(
-        //     image: AssetImage(AppImages.splash), fit: BoxFit.cover)),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // SvgPicture.asset(AppIcon.appLogo, width: 90),
-              SizedBox(height: 20.h),
-              Text(
-                'Quranic Calm',
-                style: TextStyle(
-                    fontSize: AppSizes.size_24,
-                    fontWeight: AppFontWeight.w_600,
-                    fontFamily: AppfontFamily.comforta.fontFamily),
-              ),
-            ],
-          ),
+          child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // SvgPicture.asset(AppIcon.appLogo, width: 90),
+            SizedBox(height: 20.h),
+            Text(
+              'Quranic Calm',
+              style: TextStyle(
+                  fontSize: AppSizes.size_24,
+                  fontWeight: AppFontWeight.w_600,
+                  fontFamily: AppfontFamily.comforta.fontFamily),
+            ),
+          ],
         ),
       )),
     );

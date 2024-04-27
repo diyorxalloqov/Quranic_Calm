@@ -1,5 +1,5 @@
+import 'package:quranic_calm/modules/bottomNavBar/bottom_nav_bar.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-
 
 class RouteList {
   static final RouteList _generate = RouteList._init();
@@ -14,6 +14,8 @@ class RouteList {
         return _navigate(const SplashPage());
       case 'onBoarding':
         return _navigate(const OnBoardingPage());
+      case 'bottomNavBar':
+        return _navigate(const BottomNavBar());
     }
     return null;
   }

@@ -26,7 +26,12 @@ export 'package:quranic_calm/core/constants/app/app_images.dart';
 export 'package:quranic_calm/core/constants/app/app_fontfamily.dart';
 export 'package:quranic_calm/core/lang/keys.dart';
 export 'package:quranic_calm/modules/global/widgets/main_text_style.dart';
-
-
-
-
+export 'package:quranic_calm/core/constants/app/app_fontweight.dart';
+export 'package:quranic_calm/core/constants/app/app_sizes.dart';
+export 'package:flutter_svg/flutter_svg.dart';
+export 'package:quranic_calm/core/constants/app/app_icon.dart';
+export 'package:quranic_calm/modules/global/widgets/main_background_widget.dart';
+export 'package:quranic_calm/modules/home/home_page.dart';
+export 'package:quranic_calm/modules/settings/settings_page.dart';
+export 'package:quranic_calm/utils/extension/theme.dart';
+export 'package:quranic_calm/modules/favourites/favourite_page.dart';

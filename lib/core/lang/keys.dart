@@ -1,3 +1,26 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
 String continuee = 'continue'.tr();
+String skip = 'skip'.tr();
+String onboarding1 = 'onboarding1'.tr();
+String onboarding2 = 'onboarding2'.tr();
+String onboarding3 = 'onboarding3'.tr();
+String onboarding41 = 'onboarding41'.tr();
+String onboarding42 = 'onboarding42'.tr();
+String onboarding51 = 'onboarding51'.tr();
+String onboarding52 = 'onboarding52'.tr();
+String onboarding53 = 'onboarding53'.tr();
+String onboarding54 = 'onboarding54'.tr();
+String onboarding55 = 'onboarding55'.tr();
+String onboarding56 = 'onboarding56'.tr();
+String onboarding57 = 'onboarding57'.tr();
+String onboarding58 = 'onboarding58'.tr();
+String home = 'home'.tr();
+String recently = 'recently'.tr();
+String favourites = "favourites".tr();
+String settings = 'settings'.tr();
+String notification = "notification".tr();
+String language = "language".tr();
+String sleepTime = "sleepTime".tr();
+String backgroundNoise = "backgroundNoise".tr();
+String subscription = "subscription".tr();

@@ -1,4 +1,27 @@
 {
     "app_name": "Quranic Calm",
-    "continue": "Davom etish"
+    "continue": "Davom etish",
+    "skip": "Oʻtkazib yuborish",
+    "onboarding1": "Purus mauris augue pharetra turpis sit. Tincidunt urna eget ac risus nunc enim risus nisl.",
+    "onboarding2": "Pretium aliquet vulputate dolor sit nascetur dui amet ultricies bibendum. Eget id ullamcorper ipsum fames maecenas nisi.",
+    "onboarding3": "Cursus et id nulla id magna. Aliquet pharetra in at ut. Tellus iaculis commodo at vitae tempor viverra lacus felis.",
+    "onboarding41": "Set up your Own background noise:",
+    "onboarding42": "(You can change this anytime on Settings)",
+    "onboarding51": "Activate premium",
+    "onboarding52": "Premium subscription offers you following features:",
+    "onboarding53": "Continue meditation even app is not open",
+    "onboarding54": "No more ads on your feed;",
+    "onboarding55": "You will support our hard work :)",
+    "onboarding56": "Yearly",
+    "onboarding57": "Monthly",
+    "onboarding58": "Use free trial",
+    "home": "Home",
+    "recently": "Recently listened by you",
+    "favourites": "Favourites",
+    "settings": "Settings",
+    "notification": "Notifications",
+    "language": "Language",
+    "sleepTime": "Sleep time",
+    "backgroundNoise": "Background noise",
+    "subscription": "Subscription"
 }

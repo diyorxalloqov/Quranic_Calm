@@ -1,4 +1,3 @@
-
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
 class App extends StatelessWidget {

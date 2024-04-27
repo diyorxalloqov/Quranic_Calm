@@ -1,4 +1,9 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
+import 'package:quranic_calm/modules/onboarding/onboarding1.dart';
+import 'package:quranic_calm/modules/onboarding/onboarding2.dart';
+import 'package:quranic_calm/modules/onboarding/onboarding3.dart';
+import 'package:quranic_calm/modules/onboarding/onboarding4.dart';
+import 'package:quranic_calm/modules/onboarding/onboarding5.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
@@ -8,35 +13,33 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
+  late PageController pageController;
+
+  @override
+  void initState() {
+    pageController = PageController(initialPage: 0);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _pages = [
+      OnBoarding1(pageController: pageController),
+      OnBoarding2(pageController: pageController),
+      OnBoarding3(pageController: pageController),
+      OnBoarding4(pageController: pageController),
+      OnBoarding5(pageController: pageController),
+    ];
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(AppImages.leafLeft),
-                alignment: Alignment.topCenter,
-                opacity: 500),
-            gradient: LinearGradient(colors: appBackgroundGradient)),
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SafeArea(child: Text('asas')),
-              Text(
-                  'Purus mauris augue pharetra turpis sit. Tincidunt urna eget ac risus nunc enim risus nisl. ',
-                  textAlign: TextAlign.center,
-                  style: mainTextStyle),
-              ElevatedButton(
-                  onPressed: () {},
-                  child: Center(
-                    child: Text(continuee),
-                  ))
-            ],
-          ),
-        ),
-      ),
+      body: PageView.builder(
+          controller: pageController,
+          onPageChanged: (v) {
+            setState(() {});
+          },
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return _pages[index];
+          }),
     );
   }
 }

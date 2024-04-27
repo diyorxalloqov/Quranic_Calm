@@ -9,7 +9,7 @@ void main(List<String> args) async {
   }
   runApp(EasyLocalization(
       saveLocale: true,
-      startLocale: const Locale('uz'),
+      startLocale: const Locale('en'),
       supportedLocales: const [Locale("uz"), Locale("en")],
       path: "lib/core/lang",
       child: const App()));
