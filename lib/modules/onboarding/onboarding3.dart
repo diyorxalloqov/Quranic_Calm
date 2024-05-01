@@ -25,14 +25,14 @@ class OnBoarding3 extends StatelessWidget {
                     fit: BoxFit.cover,
                     width: 250),
               ),
-              SizedBox(height: 70.h)
+              SizedBox(height: he(70))
             ],
           ),
           Align(
               alignment: Alignment.topLeft,
               child: Column(
                 children: [
-                  SizedBox(height: 80.h),
+                  SizedBox(height: he(80)),
                   AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
                     opacity: 0.8,
@@ -49,7 +49,7 @@ class OnBoarding3 extends StatelessWidget {
             children: [
               SafeArea(
                   child: Padding(
-                padding: EdgeInsets.only(left: 32.w, top: 10.h),
+                padding: EdgeInsets.only(left: 32.w, top: he(10)),
                 child: Row(children: [
                   Container(
                     decoration: BoxDecoration(
@@ -91,12 +91,12 @@ class OnBoarding3 extends StatelessWidget {
                     height: 4,
                     width: 44.w,
                   ),
-                  Text(
+                  const Text(
                     '60 %',
                     style: TextStyle(
                         fontWeight: AppFontWeight.w_400,
                         fontSize: AppSizes.size_10,
-                        fontFamily: AppfontFamily.inter.fontFamily),
+                        fontFamily: AppfontFamily.inter),
                   ),
                 ]),
               )),
@@ -107,7 +107,7 @@ class OnBoarding3 extends StatelessWidget {
                     textAlign: TextAlign.center, style: mainTextStyle),
               ),
               const SizedBox(),
-              SizedBox(height: 100.h)
+              SizedBox(height: he(100))
             ],
           ),
           Padding(
@@ -123,7 +123,7 @@ class OnBoarding3 extends StatelessWidget {
                     backgroundColor: buttonColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(6.r)),
-                    fixedSize: Size(double.infinity, 48.h)),
+                    fixedSize: const Size(double.infinity, 48)),
                 child: Center(
                   child: Text(
                     continuee,

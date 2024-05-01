@@ -7,51 +7,23 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS ? const IosApp() : const AndroidApp();
-  }
-}
-
-class AndroidApp extends StatefulWidget {
-  const AndroidApp({super.key});
-
-  @override
-  State<AndroidApp> createState() => _AndroidAppState();
-}
-
-class _AndroidAppState extends State<AndroidApp> with WidgetsBindingObserver {
-  @override
-  void initState() {
-    // RouteList.router.loadAd();
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
-    switch (state) {
-      case AppLifecycleState.resumed:
-        // Handle app resumed state
-        break;
-      case AppLifecycleState.inactive:
-        // Handle app inactive state
-        break;
-      case AppLifecycleState.paused:
-        // Handle app paused state
-        break;
-      case AppLifecycleState.detached:
-        // Handle app detached state
-        break;
-      case AppLifecycleState.hidden:
-      // TODO: Handle this case.
+    debugPrint("system is ${Platform.operatingSystem}");
+    if (Platform.isAndroid) {
+      return const AndroidApp();
+    } else if (Platform.isIOS) {
+      return const IosApp();
+    } else if (Platform.isMacOS) {
+      return const MacosApp();
+    } else if (kIsWeb) {
+      return const WebApp();
+    } else {
+      return const AndroidApp();
     }
   }
+}
+
+class AndroidApp extends StatelessWidget {
+  const AndroidApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,17 +35,20 @@ class _AndroidAppState extends State<AndroidApp> with WidgetsBindingObserver {
       builder: (ThemeData theme, ThemeData dark) {
         return ScreenUtilInit(
           designSize: kIsWeb ? const Size(1440, 1024) : const Size(393, 852),
-          builder: (context, child) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            darkTheme: AppTheme().darkMode,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            theme: theme,
-            themeMode: ThemeMode.system,
-            navigatorKey: App.navigatorKey,
-            initialRoute: '/',
-            onGenerateRoute: RouteList.router.onGenerate,
+          builder: (context, child) => MultiBlocProvider(
+            providers: [BlocProvider(create: (context) => MediatationBloc())],
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              darkTheme: AppTheme().darkMode,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              theme: theme,
+              themeMode: ThemeMode.system,
+              navigatorKey: App.navigatorKey,
+              initialRoute: '/',
+              onGenerateRoute: RouteList.router.onGenerate,
+            ),
           ),
         );
       },
@@ -81,46 +56,8 @@ class _AndroidAppState extends State<AndroidApp> with WidgetsBindingObserver {
   }
 }
 
-class IosApp extends StatefulWidget {
+class IosApp extends StatelessWidget {
   const IosApp({super.key});
-
-  @override
-  State<IosApp> createState() => _IosAppState();
-}
-
-class _IosAppState extends State<IosApp> with WidgetsBindingObserver {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
-    switch (state) {
-      case AppLifecycleState.resumed:
-        // Handle app resumed state
-        break;
-      case AppLifecycleState.inactive:
-        // Handle app inactive state
-        break;
-      case AppLifecycleState.paused:
-        // Handle app paused state
-        break;
-      case AppLifecycleState.detached:
-        // Handle app detached state
-        break;
-      case AppLifecycleState.hidden:
-      // TODO: Handle this case.
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,16 +70,87 @@ class _IosAppState extends State<IosApp> with WidgetsBindingObserver {
           return ScreenUtilInit(
               designSize:
                   kIsWeb ? const Size(1440, 1024) : const Size(393, 852),
-              builder: (context, child) => CupertinoApp(
-                debugShowCheckedModeBanner: false,
-                navigatorKey: App.navigatorKey,
-                initialRoute: '/',
-                theme: theme,
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                onGenerateRoute: RouteList.router.onGenerate,
-              ));
+              builder: (context, child) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider(create: (context) => MediatationBloc())
+                    ],
+                    child: CupertinoApp(
+                      debugShowCheckedModeBanner: false,
+                      navigatorKey: App.navigatorKey,
+                      initialRoute: '/',
+                      theme: theme,
+                      localizationsDelegates: context.localizationDelegates,
+                      supportedLocales: context.supportedLocales,
+                      locale: context.locale,
+                      onGenerateRoute: RouteList.router.onGenerate,
+                    ),
+                  ));
+        });
+  }
+}
+
+class WebApp extends StatelessWidget {
+  const WebApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return AdaptiveTheme(
+      initial: AdaptiveThemeMode.system,
+      dark: AppTheme().darkMode,
+      light: AppTheme().lightMode,
+      builder: (ThemeData theme, ThemeData dark) {
+        return ScreenUtilInit(
+          designSize: kIsWeb ? const Size(1440, 1024) : const Size(393, 852),
+          builder: (context, child) => MultiBlocProvider(
+            providers: [BlocProvider(create: (context) => MediatationBloc())],
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              darkTheme: AppTheme().darkMode,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              theme: theme,
+              themeMode: ThemeMode.system,
+              navigatorKey: App.navigatorKey,
+              initialRoute: '/',
+              onGenerateRoute: RouteList.router.onGenerate,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class MacosApp extends StatelessWidget {
+  const MacosApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return CupertinoAdaptiveTheme(
+        initial: AdaptiveThemeMode.system,
+        dark: AppTheme().cupertinoDarkMode,
+        light: AppTheme().cupertinoLightMode,
+        builder: (CupertinoThemeData theme) {
+          return ScreenUtilInit(
+              designSize: kIsWeb ? const Size(1440, 900) : const Size(393, 852),
+              builder: (context, child) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider(create: (context) => MediatationBloc())
+                    ],
+                    child: CupertinoApp(
+                      debugShowCheckedModeBanner: false,
+                      navigatorKey: App.navigatorKey,
+                      initialRoute: '/',
+                      theme: theme,
+                      localizationsDelegates: context.localizationDelegates,
+                      supportedLocales: context.supportedLocales,
+                      locale: context.locale,
+                      onGenerateRoute: RouteList.router.onGenerate,
+                    ),
+                  ));
         });
   }
 }

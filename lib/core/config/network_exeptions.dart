@@ -28,6 +28,8 @@ class NetworkExeptionResponse extends NetworkResponseConfig {
     } else if (exeption.type == DioExceptionType.connectionError ||
         exeption.type == DioExceptionType.cancel) {
       messageForUser = 'Internet mavjud emas';
+    } else if (exeption.type == DioExceptionType.badResponse) {
+      messageForUser = 'Ma\'lumotlar mavjud emas';
     } else {
       messageForUser = exeption.message.toString();
     }

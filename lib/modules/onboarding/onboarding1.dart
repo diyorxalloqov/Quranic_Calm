@@ -29,7 +29,7 @@ class OnBoarding1 extends StatelessWidget {
             children: [
               SafeArea(
                   child: Padding(
-                padding: EdgeInsets.only(left: 32.w, top: 10.h),
+                padding: EdgeInsets.only(left: 32.w, top: he(10)),
                 child: Row(
                   children: [
                     Container(
@@ -72,18 +72,18 @@ class OnBoarding1 extends StatelessWidget {
                       height: 4,
                       width: 44.w,
                     ),
-                    Text(
+                    const Text(
                       '20 %',
                       style: TextStyle(
                           fontWeight: AppFontWeight.w_400,
                           fontSize: AppSizes.size_10,
-                          fontFamily: AppfontFamily.inter.fontFamily),
+                          fontFamily: AppfontFamily.inter),
                     ),
                   ],
                 ),
               )),
               Padding(
-                padding: EdgeInsets.only(left: 54.w, top: 50.h, right: 51.w),
+                padding: EdgeInsets.only(left: 54.w, top: he(50), right: 51.w),
                 child: Text(onboarding1,
                     textAlign: TextAlign.center, style: mainTextStyle),
               ),
@@ -111,7 +111,7 @@ class OnBoarding1 extends StatelessWidget {
                             backgroundColor: buttonColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6.r)),
-                            fixedSize: Size(double.infinity, 48.h)),
+                            fixedSize: const Size(double.infinity, 48)),
                         child: Center(
                           child: Text(
                             continuee,

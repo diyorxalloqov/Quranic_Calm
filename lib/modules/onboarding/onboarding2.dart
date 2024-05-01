@@ -25,7 +25,7 @@ class OnBoarding2 extends StatelessWidget {
                       alignment: Alignment.center,
                     ),
                   ),
-                  SizedBox(height: 300.h)
+                  SizedBox(height: he(300))
                 ],
               )),
           Column(
@@ -34,7 +34,7 @@ class OnBoarding2 extends StatelessWidget {
             children: [
               SafeArea(
                   child: Padding(
-                      padding: EdgeInsets.only(left: 32.w, top: 10.h),
+                      padding: EdgeInsets.only(left: 32.w, top: he(10)),
                       child: Row(children: [
                         Container(
                           decoration: BoxDecoration(
@@ -76,12 +76,12 @@ class OnBoarding2 extends StatelessWidget {
                           height: 4,
                           width: 44.w,
                         ),
-                        Text(
+                        const Text(
                           '40 %',
                           style: TextStyle(
                               fontWeight: AppFontWeight.w_400,
                               fontSize: AppSizes.size_10,
-                              fontFamily: AppfontFamily.inter.fontFamily),
+                              fontFamily: AppfontFamily.inter),
                         ),
                       ]))),
               Column(
@@ -114,7 +114,7 @@ class OnBoarding2 extends StatelessWidget {
                             backgroundColor: buttonColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6.r)),
-                            fixedSize: Size(double.infinity, 48.h)),
+                            fixedSize: const Size(double.infinity, 48)),
                         child: Center(
                           child: Text(
                             continuee,

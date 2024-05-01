@@ -10,3 +10,6 @@ Color mainGreenColor = const Color(0xff14C7A2);
 Color buttonColor = const Color(0xff2C2E41);
 Color mainBlueColor = const Color(0xffE0E5F2);
 Color bottomNavbarBlack = const Color(0xffFFFFFF);
+Color voiceContainerColor = const Color(0xff2C2E41);
+Color numberContainerColor = const Color(0xffF2F3F5);
+Color mainPurpleColor = const Color(0xff2C2E41);

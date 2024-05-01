@@ -1,10 +1,11 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 import 'package:quranic_calm/utils/extension/size.dart';
-import 'package:quranic_calm/utils/extension/theme.dart';
 
 class OnBoarding5 extends StatefulWidget {
   final PageController pageController;
-  const OnBoarding5({super.key, required this.pageController});
+  final bool isSettingsPage;
+  const OnBoarding5(
+      {super.key, required this.isSettingsPage, required this.pageController});
 
   @override
   State<OnBoarding5> createState() => _OnBoarding4State();
@@ -24,7 +25,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 100.h),
+              SizedBox(height: he(100)),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
                 opacity: 0.4,
@@ -39,7 +40,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
               alignment: Alignment.topRight,
               child: Column(
                 children: [
-                  SizedBox(height: 80.h),
+                  SizedBox(height: he(80)),
                   AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
                     opacity: 0.4,
@@ -56,78 +57,99 @@ class _OnBoarding4State extends State<OnBoarding5> {
             children: [
               SafeArea(
                   child: Padding(
-                padding: EdgeInsets.only(left: 32.w, top: 10.h),
-                child: Row(children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
-                    margin: const EdgeInsets.only(right: 16),
-                    height: 4,
-                    width: 44.w,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
-                    margin: const EdgeInsets.only(right: 16),
-                    height: 4,
-                    width: 44.w,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
-                    margin: const EdgeInsets.only(right: 16),
-                    height: 4,
-                    width: 44.w,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
-                    margin: const EdgeInsets.only(right: 16),
-                    height: 4,
-                    width: 44.w,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
-                    margin: const EdgeInsets.only(right: 16),
-                    height: 4,
-                    width: 44.w,
-                  ),
-                  Text(
-                    '100 %',
-                    style: TextStyle(
-                        fontWeight: AppFontWeight.w_400,
-                        fontSize: AppSizes.size_10,
-                        fontFamily: AppfontFamily.inter.fontFamily),
-                  ),
-                ]),
+                padding: EdgeInsets.only(left: 32, top: he(10)),
+                child: widget.isSettingsPage
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                              onTap: () => Navigator.of(context).pop(),
+                              child: SvgPicture.asset(AppIcon.backButton)),
+                          Text(
+                            subscription,
+                            style: TextStyle(
+                                fontSize: AppSizes.size_20,
+                                fontWeight: AppFontWeight.w_600,
+                                fontFamily: AppfontFamily.abhaya.fontFamily),
+                          ),
+                          const SizedBox(width: 20)
+                        ],
+                      )
+                    : Row(children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.r),
+                              color: mainGreenColor),
+                          margin: const EdgeInsets.only(right: 16),
+                          height: 4,
+                          width: 44.w,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.r),
+                              color: mainGreenColor),
+                          margin: const EdgeInsets.only(right: 16),
+                          height: 4,
+                          width: 44.w,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.r),
+                              color: mainGreenColor),
+                          margin: const EdgeInsets.only(right: 16),
+                          height: 4,
+                          width: 44.w,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.r),
+                              color: mainGreenColor),
+                          margin: const EdgeInsets.only(right: 16),
+                          height: 4,
+                          width: 44.w,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.r),
+                              color: mainGreenColor),
+                          margin: const EdgeInsets.only(right: 16),
+                          height: 4,
+                          width: 44.w,
+                        ),
+                        const Text(
+                          '100 %',
+                          style: TextStyle(
+                              fontWeight: AppFontWeight.w_400,
+                              fontSize: AppSizes.size_10,
+                              fontFamily: AppfontFamily.inter),
+                        ),
+                      ]),
               )),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
                   children: [
+                    widget.isSettingsPage
+                        ? const SizedBox.shrink()
+                        : Text(
+                            onboarding51,
+                            style: TextStyle(
+                                fontWeight: AppFontWeight.w_600,
+                                fontSize: AppSizes.size_20,
+                                fontFamily: AppfontFamily.abhaya.fontFamily),
+                          ),
+                    SizedBox(height: he(16)),
                     Text(
-                      onboarding51,
-                      style: TextStyle(
-                          fontWeight: AppFontWeight.w_600,
-                          fontSize: AppSizes.size_20,
-                          fontFamily: AppfontFamily.abhaya.fontFamily),
-                    ),
-                    SizedBox(height: 16.h),
-                    Text(
-                      onboarding52,
+                      widget.isSettingsPage
+                          ? settingsSubscriptionItem
+                          : onboarding52,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: AppFontWeight.w_600,
                           fontSize: AppSizes.size_20,
                           fontFamily: AppfontFamily.abhaya.fontFamily),
                     ),
-                    SizedBox(height: 20.h),
+                    SizedBox(height: he(20)),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,36 +159,39 @@ class _OnBoarding4State extends State<OnBoarding5> {
                             '✧ $onboarding53',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontFamily: AppfontFamily.inter.fontFamily,
+                            style: const TextStyle(
+                                fontFamily: AppfontFamily.inter,
                                 fontSize: AppSizes.size_16,
                                 fontWeight: AppFontWeight.w_400),
                           ),
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(height: he(10)),
                         Flexible(
                           child: Text(
                             '✧ $onboarding54',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontFamily: AppfontFamily.inter.fontFamily,
+                            style: const TextStyle(
+                                fontFamily: AppfontFamily.inter,
                                 fontSize: AppSizes.size_16,
                                 fontWeight: AppFontWeight.w_400),
                           ),
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(height: he(10)),
                         Flexible(
                           child: Text(
                             '✧ $onboarding55',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontFamily: AppfontFamily.inter.fontFamily,
+                            style: const TextStyle(
+                                fontFamily: AppfontFamily.inter,
                                 fontSize: AppSizes.size_16,
                                 fontWeight: AppFontWeight.w_400),
                           ),
                         ),
+                        widget.isSettingsPage
+                            ? SizedBox(height: he(30))
+                            : const SizedBox.shrink(),
                         GestureDetector(
                           onTap: () {
                             setState(() {
@@ -219,7 +244,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
                               trailing: Text(
                                 '\$29.99 (save 20%)',
                                 style: TextStyle(
-                                    fontFamily: AppfontFamily.inter.fontFamily,
+                                    fontFamily: AppfontFamily.inter,
                                     fontSize: AppSizes.size_12,
                                     fontWeight: AppFontWeight.w_400,
                                     color: context.isDark
@@ -251,41 +276,46 @@ class _OnBoarding4State extends State<OnBoarding5> {
                                 color: context.isDark
                                     ? Colors.black
                                     : Colors.white),
-                            child: ListTile(
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              leading: Container(
-                                margin: const EdgeInsets.only(left: 5),
-                                height: 22.r,
-                                width: 22.r,
-                                padding: const EdgeInsets.all(4),
-                                decoration: ShapeDecoration(
-                                    color: isSecondContainerSelected
-                                        ? Colors.black
-                                        : Colors.white,
-                                    shape: const OvalBorder(
-                                        side: BorderSide(
-                                            color: Colors.black, width: 1))),
-                              ),
-                              title: Text(
-                                onboarding57,
-                                style: TextStyle(
-                                    fontFamily: AppfontFamily.abhaya.fontFamily,
-                                    fontSize: AppSizes.size_20,
-                                    fontWeight: AppFontWeight.w_600,
-                                    color: context.isDark
-                                        ? Colors.white
-                                        : Colors.black),
-                              ),
-                              trailing: Text(
-                                '\$29.99',
-                                style: TextStyle(
-                                    fontFamily: AppfontFamily.inter.fontFamily,
-                                    fontSize: AppSizes.size_12,
-                                    fontWeight: AppFontWeight.w_400,
-                                    color: context.isDark
-                                        ? Colors.white
-                                        : Colors.black),
+                            child: Center(
+                              child: ListTile(
+                                visualDensity:
+                                    VisualDensity.adaptivePlatformDensity,
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                leading: Container(
+                                  margin: const EdgeInsets.only(left: 5),
+                                  height: 22.r,
+                                  width: 22.r,
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: ShapeDecoration(
+                                      color: isSecondContainerSelected
+                                          ? Colors.black
+                                          : Colors.white,
+                                      shape: const OvalBorder(
+                                          side: BorderSide(
+                                              color: Colors.black, width: 1))),
+                                ),
+                                title: Text(
+                                  onboarding57,
+                                  style: TextStyle(
+                                      fontFamily:
+                                          AppfontFamily.abhaya.fontFamily,
+                                      fontSize: AppSizes.size_20,
+                                      fontWeight: AppFontWeight.w_600,
+                                      color: context.isDark
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                                trailing: Text(
+                                  '\$29.99',
+                                  style: TextStyle(
+                                      fontFamily: AppfontFamily.inter,
+                                      fontSize: AppSizes.size_12,
+                                      fontWeight: AppFontWeight.w_400,
+                                      color: context.isDark
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
                               ),
                             ),
                           ),
@@ -328,7 +358,9 @@ class _OnBoarding4State extends State<OnBoarding5> {
                   ],
                 ),
               ),
-              SizedBox(height: 100.h),
+              widget.isSettingsPage
+                  ? const SizedBox.shrink()
+                  : SizedBox(height: he(100)),
               const SizedBox(height: 45),
             ],
           ),
@@ -344,7 +376,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
                         backgroundColor: buttonColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6.r)),
-                        fixedSize: Size(double.infinity, 48.h)),
+                        fixedSize: const Size(double.infinity, 48)),
                     child: Center(
                       child: Text(
                         continuee,
@@ -356,20 +388,24 @@ class _OnBoarding4State extends State<OnBoarding5> {
                       ),
                     )),
                 const SizedBox(height: 5),
-                TextButton(
-                    onPressed: () async {
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, 'bottomNavBar', (route) => false);
-                      await StorageRepository.putBool(Keys.isOnboarding, true);
-                    },
-                    child: Text(
-                      home,
-                      style: TextStyle(
-                          fontSize: AppSizes.size_20,
-                          color: context.isDark ? Colors.white : Colors.black,
-                          fontFamily: AppfontFamily.abhaya.fontFamily,
-                          fontWeight: AppFontWeight.w_600),
-                    ))
+                widget.isSettingsPage
+                    ? const SizedBox.shrink()
+                    : TextButton(
+                        onPressed: () async {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, 'bottomNavBar', (route) => false);
+                          await StorageRepository.putBool(
+                              Keys.isOnboarding, true);
+                        },
+                        child: Text(
+                          home,
+                          style: TextStyle(
+                              fontSize: AppSizes.size_20,
+                              color:
+                                  context.isDark ? Colors.white : Colors.black,
+                              fontFamily: AppfontFamily.abhaya.fontFamily,
+                              fontWeight: AppFontWeight.w_600),
+                        ))
               ],
             ),
           ),

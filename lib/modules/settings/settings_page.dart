@@ -1,4 +1,5 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
+import 'package:quranic_calm/modules/onboarding/onboarding5.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -15,7 +16,7 @@ class _SettingsPageState extends State<SettingsPage> {
       padding: EdgeInsets.symmetric(horizontal: wi(31)),
       child: Column(
         children: [
-          const SizedBox(height: 28),
+          SizedBox(height: he(28)),
           Center(
             child: Text(
               settings,
@@ -25,6 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   fontFamily: AppfontFamily.abhaya.fontFamily),
             ),
           ),
+          SizedBox(height: he(16)),
           Card(
             elevation: 0,
             child: ListTile(
@@ -32,7 +34,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: Text(
                   notification,
                   style: TextStyle(
-                    fontFamily: AppfontFamily.inter.fontFamily,
+                    fontFamily: AppfontFamily.inter,
+                    color: context.isDark ? Colors.white : mainTextColor,
                     fontSize: AppSizes.size_16,
                     fontWeight: AppFontWeight.w_400,
                   ),
@@ -63,7 +66,8 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Column(
               children: [
                 ListTile(
-                  onTap: () {},
+                  onTap: () => Navigator.of(context, rootNavigator: true)
+                      .pushNamed('languagePage'),
                   visualDensity: VisualDensity.adaptivePlatformDensity,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
@@ -73,28 +77,34 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: Text(
                     language,
                     style: TextStyle(
-                      fontFamily: AppfontFamily.inter.fontFamily,
+                      color: context.isDark ? Colors.white : mainTextColor,
+                      fontFamily: AppfontFamily.inter,
                       fontSize: AppSizes.size_16,
                       fontWeight: AppFontWeight.w_400,
                     ),
                   ),
                 ),
-                // const Divider(),
+                Container(
+                    color: Colors.black12, height: 1, width: double.infinity),
                 ListTile(
-                  onTap: () {},
+                  onTap: () => Navigator.of(context, rootNavigator: true)
+                      .pushNamed('sleepTime'),
                   leading: SvgPicture.asset(AppIcon.clock),
                   title: Text(
                     sleepTime,
                     style: TextStyle(
-                      fontFamily: AppfontFamily.inter.fontFamily,
+                      color: context.isDark ? Colors.white : mainTextColor,
+                      fontFamily: AppfontFamily.inter,
                       fontSize: AppSizes.size_16,
                       fontWeight: AppFontWeight.w_400,
                     ),
                   ),
                 ),
-                // const Divider(),
+                Container(
+                    color: Colors.black12, height: 1, width: double.infinity),
                 ListTile(
-                  onTap: () {},
+                  onTap: () => Navigator.of(context, rootNavigator: true)
+                      .pushNamed('backgroundNoise'),
                   visualDensity: VisualDensity.adaptivePlatformDensity,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
@@ -104,7 +114,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: Text(
                     backgroundNoise,
                     style: TextStyle(
-                      fontFamily: AppfontFamily.inter.fontFamily,
+                      fontFamily: AppfontFamily.inter,
+                      color: context.isDark ? Colors.white : mainTextColor,
                       fontSize: AppSizes.size_16,
                       fontWeight: AppFontWeight.w_400,
                     ),
@@ -117,12 +128,19 @@ class _SettingsPageState extends State<SettingsPage> {
           Card(
               elevation: 0,
               child: ListTile(
-                onTap: () {},
+                onTap: () => Navigator.of(context, rootNavigator: true)
+                    .push(MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                              body: OnBoarding5(
+                                  isSettingsPage: true,
+                                  pageController: PageController()),
+                            ))),
                 leading: SvgPicture.asset(AppIcon.subscription),
                 title: Text(
                   subscription,
                   style: TextStyle(
-                    fontFamily: AppfontFamily.inter.fontFamily,
+                    fontFamily: AppfontFamily.inter,
+                    color: context.isDark ? Colors.white : mainTextColor,
                     fontSize: AppSizes.size_16,
                     fontWeight: AppFontWeight.w_400,
                   ),

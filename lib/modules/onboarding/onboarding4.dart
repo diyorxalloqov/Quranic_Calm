@@ -1,8 +1,5 @@
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quranic_calm/core/constants/app/app_icon.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 import 'package:quranic_calm/utils/extension/size.dart';
-import 'package:quranic_calm/utils/extension/theme.dart';
 
 class OnBoarding4 extends StatefulWidget {
   final PageController pageController;
@@ -26,7 +23,7 @@ class _OnBoarding4State extends State<OnBoarding4> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 100.h),
+              SizedBox(height: he(100)),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
                 opacity: 0.4,
@@ -41,7 +38,7 @@ class _OnBoarding4State extends State<OnBoarding4> {
               alignment: Alignment.topRight,
               child: Column(
                 children: [
-                  SizedBox(height: 80.h),
+                  SizedBox(height: he(80)),
                   AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
                     opacity: 0.4,
@@ -58,7 +55,7 @@ class _OnBoarding4State extends State<OnBoarding4> {
             children: [
               SafeArea(
                   child: Padding(
-                padding: EdgeInsets.only(left: 32.w, top: 10.h),
+                padding: EdgeInsets.only(left: 32.w, top: he(10)),
                 child: Row(children: [
                   Container(
                     decoration: BoxDecoration(
@@ -100,12 +97,12 @@ class _OnBoarding4State extends State<OnBoarding4> {
                     height: 4,
                     width: 44.w,
                   ),
-                  Text(
+                  const Text(
                     '80 %',
                     style: TextStyle(
                         fontWeight: AppFontWeight.w_400,
                         fontSize: AppSizes.size_10,
-                        fontFamily: AppfontFamily.inter.fontFamily),
+                        fontFamily: AppfontFamily.inter),
                   ),
                 ]),
               )),
@@ -118,15 +115,15 @@ class _OnBoarding4State extends State<OnBoarding4> {
                         fontSize: AppSizes.size_20,
                         fontFamily: AppfontFamily.abhaya.fontFamily),
                   ),
-                  SizedBox(height: 11.h),
+                  SizedBox(height: he(11)),
                   Text(
                     onboarding42,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: AppFontWeight.w_400,
                         fontSize: AppSizes.size_14,
-                        fontFamily: AppfontFamily.inter.fontFamily),
+                        fontFamily: AppfontFamily.inter),
                   ),
-                  SizedBox(height: 35.h),
+                  SizedBox(height: he(35)),
                   Padding(
                       padding: EdgeInsets.symmetric(horizontal: 32.w),
                       child: Column(
@@ -134,7 +131,8 @@ class _OnBoarding4State extends State<OnBoarding4> {
                         children: List.generate(
                             4,
                             (index) => Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                                  padding:
+                                      EdgeInsets.symmetric(vertical: he(10)),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -151,11 +149,10 @@ class _OnBoarding4State extends State<OnBoarding4> {
                                                 SvgPicture.asset(AppIcon.rain),
                                           ),
                                           SizedBox(width: 12.w),
-                                          Text(
+                                          const Text(
                                             'rain',
                                             style: TextStyle(
-                                                fontFamily: AppfontFamily
-                                                    .inter.fontFamily,
+                                                fontFamily: AppfontFamily.inter,
                                                 fontWeight: AppFontWeight.w_400,
                                                 fontSize: AppSizes.size_14),
                                           )
@@ -186,7 +183,7 @@ class _OnBoarding4State extends State<OnBoarding4> {
                 ],
               ),
               const SizedBox(),
-              SizedBox(height: 200.h),
+              SizedBox(height: he(200)),
               const SizedBox(),
               const SizedBox(),
               const SizedBox(),
@@ -208,7 +205,7 @@ class _OnBoarding4State extends State<OnBoarding4> {
                         backgroundColor: buttonColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6.r)),
-                        fixedSize: Size(double.infinity, 48.h)),
+                        fixedSize: const Size(double.infinity, 48)),
                     child: Center(
                       child: Text(
                         continuee,

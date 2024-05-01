@@ -14,7 +14,7 @@ class MainBackgroundWidget extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 100.h),
+              SizedBox(height: he(100)),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
                 opacity: 0.4,
@@ -25,21 +25,22 @@ class MainBackgroundWidget extends StatelessWidget {
               ),
             ],
           ),
-          Align(
-              alignment: Alignment.topRight,
-              child: Column(
-                children: [
-                  SizedBox(height: 80.h),
-                  AnimatedOpacity(
-                    duration: const Duration(milliseconds: 500),
-                    opacity: 0.4,
-                    child: Image.asset(AppImages.leafRight,
-                        alignment: Alignment.topRight,
-                        fit: BoxFit.cover,
-                        width: 250),
-                  ),
-                ],
-              )),
+          Column(
+            children: [
+              SizedBox(height: he(80)),
+              AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: 0.4,
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Image.asset(AppImages.leafRight,
+                      alignment: Alignment.topRight,
+                      fit: BoxFit.cover,
+                      width: 250),
+                ),
+              ),
+            ],
+          ),
           Positioned(child: mainWidget)
         ],
       ),

@@ -12,7 +12,7 @@ class _FavouritePageState extends State<FavouritePage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 28),
+        SizedBox(height: he(28)),
         Center(
             child: Text(
           favourites,
@@ -21,6 +21,7 @@ class _FavouritePageState extends State<FavouritePage> {
               fontWeight: AppFontWeight.w_600,
               fontFamily: AppfontFamily.abhaya.fontFamily),
         )),
+        SizedBox(height: he(12)),
         Expanded(
             child: ListView.builder(
                 itemCount: 10,
@@ -35,28 +36,26 @@ class _FavouritePageState extends State<FavouritePage> {
                         style: TextStyle(
                             fontSize: AppSizes.size_20,
                             fontWeight: AppFontWeight.w_400,
-                            fontFamily: AppfontFamily.inter.fontFamily),
+                            fontFamily: AppfontFamily.inter),
                       ),
                       subtitle: Text(
                         'Mishary Rashid',
                         style: TextStyle(
-                            fontFamily: AppfontFamily.inter.fontFamily,
+                            fontFamily: AppfontFamily.inter,
                             fontSize: AppSizes.size_14,
                             fontWeight: AppFontWeight.w_400),
                       ),
                       trailing: Column(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           GestureDetector(
                               onTap: () {},
-                              child:
-                                  SvgPicture.asset(AppIcon.favouriteGreen)),
-                          SizedBox(height: 12.h),
+                              child: SvgPicture.asset(AppIcon.favouriteGreen)),
                           Text(
                             '45:00',
                             style: TextStyle(
-                                fontFamily: AppfontFamily.inter.fontFamily,
+                                fontFamily: AppfontFamily.inter,
                                 fontSize: AppSizes.size_14,
                                 fontWeight: AppFontWeight.w_400),
                           )

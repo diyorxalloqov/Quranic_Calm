@@ -17,10 +17,18 @@ class SizeConfig {
 
 double he(double inputHeight) {
   double screenHeight = SizeConfig.screenHeight!;
-  return (inputHeight / 851.0) * screenHeight;
+  if (Platform.isAndroid || Platform.isIOS) {
+    return (inputHeight / 851.0) * screenHeight;
+  } else {
+    return (inputHeight / 1024.0) * screenHeight;
+  }
 }
 
 double wi(double inputWidth) {
   double screenWidth = SizeConfig.screenWidth!;
-  return (inputWidth / 393.0) * screenWidth;
+  if (Platform.isAndroid || Platform.isIOS) {
+    return (inputWidth / 393.0) * screenWidth;
+  } else {
+    return (inputWidth / 1440.0) * screenWidth;
+  }
 }

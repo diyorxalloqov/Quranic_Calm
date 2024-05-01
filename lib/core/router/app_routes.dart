@@ -1,5 +1,6 @@
-import 'package:quranic_calm/modules/bottomNavBar/bottom_nav_bar.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
+import 'package:quranic_calm/modules/home/ui/pages/sura_details_page.dart';
+import 'package:quranic_calm/modules/settings/pages/language_page.dart';
 
 class RouteList {
   static final RouteList _generate = RouteList._init();
@@ -16,6 +17,14 @@ class RouteList {
         return _navigate(const OnBoardingPage());
       case 'bottomNavBar':
         return _navigate(const BottomNavBar());
+      case 'sleepTime':
+        return _navigate(const SleepTimePage());
+      case 'backgroundNoise':
+        return _navigate(const BackgroundNoise());
+      case "languagePage":
+        return _navigate(const LanguagePage());
+      case "suraDetailsPage":
+        return _navigate(const SuraDetailsPage());
     }
     return null;
   }

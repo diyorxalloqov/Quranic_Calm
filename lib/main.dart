@@ -1,11 +1,12 @@
 import 'package:quranic_calm/modules/app.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
+
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
   if (StorageRepository.getString(Keys.lang) == '') {
-    await StorageRepository.putString(Keys.lang, 'uz');
+    await StorageRepository.putString(Keys.lang, 'uzbek');
   }
   runApp(EasyLocalization(
       saveLocale: true,

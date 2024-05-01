@@ -13,9 +13,9 @@ class AppIcon {
   static const String language = 'assets/icons/language.svg';
   static const String notification = 'assets/icons/notification.svg';
   static const String subscription = 'assets/icons/subscription.svg';
-
-
-
-
-
+  static const String backButton = 'assets/icons/back.svg';
+  static const String volume = 'assets/icons/volume.svg';
+  static const String next = 'assets/icons/next.svg';
+  static const String previous = 'assets/icons/previous.svg';
+  static const String pause = 'assets/icons/pause.svg';
 }

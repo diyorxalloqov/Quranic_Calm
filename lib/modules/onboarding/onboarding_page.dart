@@ -28,7 +28,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       OnBoarding2(pageController: pageController),
       OnBoarding3(pageController: pageController),
       OnBoarding4(pageController: pageController),
-      OnBoarding5(pageController: pageController),
+      OnBoarding5(pageController: pageController, isSettingsPage: false),
     ];
     return Scaffold(
       body: PageView.builder(

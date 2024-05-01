@@ -11,7 +11,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> _screens = const [
     MainBackgroundWidget(mainWidget: FavouritePage()),
-    MainBackgroundWidget(mainWidget: HomePage()),
+    HomePage(),
     MainBackgroundWidget(mainWidget: SettingsPage())
   ];
   late PersistentTabController _controller;
@@ -29,6 +29,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         bottomNavigationBar: PersistentTabView(context,
             controller: _controller,
             navBarHeight: he(79),
+            popAllScreensOnTapAnyTabs: true,
             screens: _screens, onItemSelected: (value) {
       _currentIndex = value;
       setState(() {});
@@ -47,61 +48,22 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 _currentIndex == 2 ? AppIcon.settingsBig : AppIcon.settings),
           )
         ],
-            confineInSafeArea: true,
             backgroundColor: context.isDark ? bottomNavbarBlack : Colors.white,
-            resizeToAvoidBottomInset: true,
             handleAndroidBackButtonPress: true,
             hideNavigationBarWhenKeyboardShows: true,
+            popActionScreens: PopActionScreensType.once,
             decoration: NavBarDecoration(
                 borderRadius: BorderRadius.circular(21.0),
                 colorBehindNavBar: Colors.white),
             popAllScreensOnTapOfSelectedTab: true,
+            resizeToAvoidBottomInset: true,
+            stateManagement: true,
             itemAnimationProperties: const ItemAnimationProperties(
                 duration: Duration(milliseconds: 200), curve: Curves.ease),
             screenTransitionAnimation: const ScreenTransitionAnimation(
                 animateTabTransition: true,
                 curve: Curves.ease,
                 duration: Duration(milliseconds: 200)),
-            navBarStyle: NavBarStyle.simple)
-        // Container(
-        //   height: he(79),
-        //   decoration: BoxDecoration(
-        //       color: context.isDark ? bottomNavbarBlack : Colors.red,
-        //       // boxShadow: const [
-        //       //   BoxShadow(
-        //       //       color: Colors.black26, spreadRadius: 0.1, blurRadius: 0.1)
-        //       // ],
-        //       borderRadius: BorderRadius.only(
-        //           topLeft: Radius.circular(24.r),
-        //           topRight: Radius.circular(24.r))),
-        //   child: BottomNavigationBar(
-        //     onTap: (v) {
-        //       _currentIndex = v;
-        //       setState(() {});
-        //     },
-        //     currentIndex: _currentIndex,
-        //     backgroundColor: Colors.transparent,
-        //     type: BottomNavigationBarType.fixed,
-        //     elevation: 0,
-        //     fixedColor: Colors.transparent,
-        //     showSelectedLabels: false,
-        //     showUnselectedLabels: false,
-        //     items: [
-        //       BottomNavigationBarItem(
-        //           label: '',
-        //           activeIcon: SvgPicture.asset(AppIcon.favouriteBig),
-        //           icon: SvgPicture.asset(AppIcon.favourite)),
-        //       BottomNavigationBarItem(
-        //           label: '',
-        //           activeIcon: SvgPicture.asset(AppIcon.homeBig),
-        //           icon: SvgPicture.asset(AppIcon.home)),
-        //       BottomNavigationBarItem(
-        //           label: '',
-        //           activeIcon: SvgPicture.asset(AppIcon.settingsBig),
-        //           icon: SvgPicture.asset(AppIcon.settings))
-        //     ],
-        //   ),
-        // )
-        );
+            navBarStyle: NavBarStyle.simple));
   }
-} /*   */
+}

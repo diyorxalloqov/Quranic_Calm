@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quranic_calm/core/constants/app/app_fontfamily.dart';
 import 'package:quranic_calm/core/constants/app/app_fontweight.dart';
 import 'package:quranic_calm/core/constants/app/app_sizes.dart';
 import 'package:quranic_calm/core/constants/keys.dart';
 import 'package:quranic_calm/core/db/shared_preferences.dart';
+import 'package:quranic_calm/core/constants/size/size_config.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -35,7 +35,7 @@ class _SplashPageState extends State<SplashPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // SvgPicture.asset(AppIcon.appLogo, width: 90),
-            SizedBox(height: 20.h),
+            SizedBox(height: he(20)),
             Text(
               'Quranic Calm',
               style: TextStyle(

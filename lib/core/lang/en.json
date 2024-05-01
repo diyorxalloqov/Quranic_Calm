@@ -23,5 +23,16 @@
     "language": "Language",
     "sleepTime": "Sleep time",
     "backgroundNoise": "Background noise",
-    "subscription": "Subscription"
+    "subscription": "Subscription",
+    "settingsSubscriptionItem": "Activating premium subscription unlocks you number of features:",
+    "setSleepTime": "Set an automatic shutdown",
+    "minutes": "minutes",
+    "or": "or",
+    "shutDownSuraFinish":"shut down when the surah finishes",
+    "savePref":"Save preferences",
+    "startMediatations":"Start meditation",
+    "suggestions":"Suggestions",
+    "categories":"Categories",
+    "setNoise":"Set background noise"
+
 }
