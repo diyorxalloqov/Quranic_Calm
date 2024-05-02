@@ -34,3 +34,4 @@ String startMediatations = "startMediatations".tr();
 String suggestions = "suggestions".tr();
 String categories = "categories".tr();
 String setNoise = "setNoise".tr();
+String theme = "theme".tr();

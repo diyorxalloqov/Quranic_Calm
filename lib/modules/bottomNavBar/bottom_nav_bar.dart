@@ -37,14 +37,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
             items: [
           PersistentBottomNavBarItem(
             icon: SvgPicture.asset(
+                color: context.isDark ? Colors.white : null,
                 _currentIndex == 0 ? AppIcon.favouriteBig : AppIcon.favourite),
           ),
           PersistentBottomNavBarItem(
             icon: SvgPicture.asset(
+                color: context.isDark ? Colors.white : null,
                 _currentIndex == 1 ? AppIcon.homeBig : AppIcon.home),
           ),
           PersistentBottomNavBarItem(
             icon: SvgPicture.asset(
+                color: context.isDark ? Colors.white : null,
                 _currentIndex == 2 ? AppIcon.settingsBig : AppIcon.settings),
           )
         ],
@@ -53,8 +56,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
             hideNavigationBarWhenKeyboardShows: true,
             popActionScreens: PopActionScreensType.once,
             decoration: NavBarDecoration(
-                borderRadius: BorderRadius.circular(21.0),
-                colorBehindNavBar: Colors.white),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24.r),
+                    topRight: Radius.circular(24.r))),
             popAllScreensOnTapOfSelectedTab: true,
             resizeToAvoidBottomInset: true,
             stateManagement: true,

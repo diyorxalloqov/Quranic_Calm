@@ -17,5 +17,7 @@ class AppIcon {
   static const String volume = 'assets/icons/volume.svg';
   static const String next = 'assets/icons/next.svg';
   static const String previous = 'assets/icons/previous.svg';
+  static const String nextBlack = 'assets/icons/next_black.svg';
+  static const String previousBlack = 'assets/icons/previous_black.svg';
   static const String pause = 'assets/icons/pause.svg';
 }

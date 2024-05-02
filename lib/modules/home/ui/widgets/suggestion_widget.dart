@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
 class SuggestionWidget extends StatelessWidget {
@@ -5,13 +7,22 @@ class SuggestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> _randomImages = [
+      AppImages.suggestionBack,
+      AppImages.suggestionBack1,
+      AppImages.suggestionBack2,
+      AppImages.suggestionBack3
+    ];
+    final int _randomIndex = Random().nextInt(_randomImages.length);
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       margin: EdgeInsets.symmetric(horizontal: wi(8)),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.r),
-          image: const DecorationImage(
-              image: AssetImage(AppImages.suggestionBack), fit: BoxFit.cover)),
+          image: DecorationImage(
+              image: AssetImage(_randomImages[_randomIndex]),
+              fit: BoxFit.cover)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -41,7 +52,9 @@ class SuggestionWidget extends StatelessWidget {
             padding: const EdgeInsets.all(6.0),
             decoration:
                 const ShapeDecoration(shape: OvalBorder(), color: Colors.white),
-            child: GestureDetector(onTap: () {}, child: const Icon(Icons.play_arrow)),
+            child: GestureDetector(
+                onTap: () {},
+                child: const Icon(Icons.play_arrow, color: Colors.black)),
           )
         ],
       ),

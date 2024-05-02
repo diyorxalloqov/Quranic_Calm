@@ -1,5 +1,5 @@
+import 'package:quranic_calm/core/constants/app/app_colors.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 class SleepTimePage extends StatefulWidget {
   const SleepTimePage({super.key});
@@ -33,7 +33,8 @@ class _SleepTimePageState extends State<SleepTimePage> {
                         children: [
                           GestureDetector(
                               onTap: () => Navigator.of(context).pop(),
-                              child: SvgPicture.asset(AppIcon.backButton)),
+                              child: SvgPicture.asset(AppIcon.backButton,
+                                  color: context.isDark ? Colors.white : null)),
                           Text(
                             sleepTime,
                             style: TextStyle(
@@ -67,12 +68,18 @@ class _SleepTimePageState extends State<SleepTimePage> {
                               decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12.r),
-                                      borderSide: const BorderSide(
-                                          color: Colors.black, width: 1)),
-                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: context.isDark
+                                              ? const Color(0xffE4E4EC)
+                                              : Colors.black,
+                                          width: 1)),
+                                  enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12.r),
-                                      borderSide: const BorderSide(
-                                          color: Colors.black, width: 1)),
+                                      borderSide: BorderSide(
+                                          color: context.isDark
+                                              ? const Color(0xffE4E4EC)
+                                              : Colors.black,
+                                          width: 1)),
                                   constraints: BoxConstraints(
                                       maxHeight: he(Platform.isAndroid ||
                                               Platform.isAndroid
@@ -138,7 +145,6 @@ class _SleepTimePageState extends State<SleepTimePage> {
                         ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: buttonColor,
                                 elevation: 0,
                                 shadowColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
@@ -149,9 +155,7 @@ class _SleepTimePageState extends State<SleepTimePage> {
                                 savePref,
                                 style: TextStyle(
                                     fontSize: AppSizes.size_20,
-                                    color: context.isDark
-                                        ? mainTextColor
-                                        : Colors.white,
+                                    color: Colors.white,
                                     fontWeight: AppFontWeight.w_600,
                                     fontFamily:
                                         AppfontFamily.abhaya.fontFamily),
@@ -165,8 +169,11 @@ class _SleepTimePageState extends State<SleepTimePage> {
                                 shadowColor: Colors.transparent,
                                 backgroundColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        color: Colors.black, width: 1),
+                                    side: BorderSide(
+                                        color: context.isDark
+                                            ? primaryColorBlack
+                                            : Colors.black,
+                                        width: 1),
                                     borderRadius: BorderRadius.circular(4.r)),
                                 fixedSize: const Size(double.infinity, 48)),
                             child: Center(
@@ -175,7 +182,7 @@ class _SleepTimePageState extends State<SleepTimePage> {
                                 style: TextStyle(
                                     fontSize: AppSizes.size_20,
                                     color: context.isDark
-                                        ? Colors.white
+                                        ? primaryColorBlack
                                         : mainTextColor,
                                     fontWeight: AppFontWeight.w_600,
                                     fontFamily:

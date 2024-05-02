@@ -1,5 +1,4 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 class OnBoarding5 extends StatefulWidget {
   final PageController pageController;
@@ -18,7 +17,10 @@ class _OnBoarding4State extends State<OnBoarding5> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: appBackgroundGradient)),
+          gradient: LinearGradient(
+              colors: context.isDark
+                  ? appBackgroundGradientBlack
+                  : appBackgroundGradient)),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -28,7 +30,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
               SizedBox(height: he(100)),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
-                opacity: 0.4,
+                opacity: context.isDark ? 0.8 : 0.4,
                 child: Image.asset(AppImages.leafLeft,
                     alignment: Alignment.bottomCenter,
                     fit: BoxFit.cover,
@@ -43,7 +45,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
                   SizedBox(height: he(80)),
                   AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
-                    opacity: 0.4,
+                    opacity: context.isDark ? 0.8 : 0.4,
                     child: Image.asset(AppImages.leafRight,
                         alignment: Alignment.topLeft,
                         fit: BoxFit.cover,
@@ -64,7 +66,10 @@ class _OnBoarding4State extends State<OnBoarding5> {
                         children: [
                           GestureDetector(
                               onTap: () => Navigator.of(context).pop(),
-                              child: SvgPicture.asset(AppIcon.backButton)),
+                              child: SvgPicture.asset(AppIcon.backButton,
+                                  color: context.isDark
+                                      ? Colors.white.withOpacity(0.9)
+                                      : null)),
                           Text(
                             subscription,
                             style: TextStyle(
@@ -79,42 +84,52 @@ class _OnBoarding4State extends State<OnBoarding5> {
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(2.r),
-                              color: mainGreenColor),
+                              color: context.isDark
+                                  ? mainGreenColorDark
+                                  : mainGreenColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(2.r),
-                              color: mainGreenColor),
+                              color: context.isDark
+                                  ? mainGreenColorDark
+                                  : mainGreenColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(2.r),
-                              color: mainGreenColor),
+                              color: context.isDark
+                                  ? mainGreenColorDark
+                                  : mainGreenColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(2.r),
-                              color: mainGreenColor),
+                              color: context.isDark
+                                  ? mainGreenColorDark
+                                  : mainGreenColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(2.r),
-                              color: mainGreenColor),
+                              color: context.isDark
+                                  ? mainGreenColorDark
+                                  : mainGreenColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         const Text(
                           '100 %',
@@ -205,7 +220,11 @@ class _OnBoarding4State extends State<OnBoarding5> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 border: isFirstContainerSelected
-                                    ? Border.all(color: Colors.black, width: 1)
+                                    ? Border.all(
+                                        color: context.isDark
+                                            ? mainGreenColorDark
+                                            : Colors.black,
+                                        width: 1)
                                     : Border.all(
                                         width: 1,
                                         color: context.isDark
@@ -213,7 +232,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
                                             : Colors.white),
                                 borderRadius: BorderRadius.circular(4.r),
                                 color: context.isDark
-                                    ? Colors.black
+                                    ? const Color(0xff2B2B3B)
                                     : Colors.white),
                             child: ListTile(
                               contentPadding:
@@ -225,11 +244,20 @@ class _OnBoarding4State extends State<OnBoarding5> {
                                 padding: const EdgeInsets.all(4),
                                 decoration: ShapeDecoration(
                                     color: isFirstContainerSelected
-                                        ? Colors.black
-                                        : Colors.white,
-                                    shape: const OvalBorder(
+                                        ? context.isDark
+                                            ? mainGreenColorDark
+                                            : Colors.black
+                                        : context.isDark
+                                            ? const Color(0xff2B2B3B)
+                                            : Colors.white,
+                                    shape: OvalBorder(
                                         side: BorderSide(
-                                            color: Colors.black, width: 1))),
+                                            color: isFirstContainerSelected
+                                                ? context.isDark
+                                                    ? Colors.transparent
+                                                    : Colors.black
+                                                : Colors.white,
+                                            width: 1))),
                               ),
                               title: Text(
                                 onboarding56,
@@ -266,7 +294,11 @@ class _OnBoarding4State extends State<OnBoarding5> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 border: isSecondContainerSelected
-                                    ? Border.all(color: Colors.black, width: 1)
+                                    ? Border.all(
+                                        color: context.isDark
+                                            ? mainGreenColorDark
+                                            : Colors.black,
+                                        width: 1)
                                     : Border.all(
                                         width: 1,
                                         color: context.isDark
@@ -274,7 +306,7 @@ class _OnBoarding4State extends State<OnBoarding5> {
                                             : Colors.white),
                                 borderRadius: BorderRadius.circular(4.r),
                                 color: context.isDark
-                                    ? Colors.black
+                                    ? const Color(0xff2B2B3B)
                                     : Colors.white),
                             child: Center(
                               child: ListTile(
@@ -289,11 +321,20 @@ class _OnBoarding4State extends State<OnBoarding5> {
                                   padding: const EdgeInsets.all(4),
                                   decoration: ShapeDecoration(
                                       color: isSecondContainerSelected
-                                          ? Colors.black
-                                          : Colors.white,
-                                      shape: const OvalBorder(
+                                          ? context.isDark
+                                              ? mainGreenColorDark
+                                              : Colors.black
+                                          : context.isDark
+                                              ? const Color(0xff2B2B3B)
+                                              : Colors.white,
+                                      shape: OvalBorder(
                                           side: BorderSide(
-                                              color: Colors.black, width: 1))),
+                                              color: isSecondContainerSelected
+                                                  ? context.isDark
+                                                      ? Colors.transparent
+                                                      : Colors.black
+                                                  : Colors.white,
+                                              width: 1))),
                                 ),
                                 title: Text(
                                   onboarding57,
@@ -373,7 +414,6 @@ class _OnBoarding4State extends State<OnBoarding5> {
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: buttonColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6.r)),
                         fixedSize: const Size(double.infinity, 48)),

@@ -1,5 +1,4 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 class OnBoarding3 extends StatelessWidget {
   final PageController pageController;
@@ -10,7 +9,10 @@ class OnBoarding3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: appBackgroundGradient)),
+          gradient: LinearGradient(
+              colors: context.isDark
+                  ? appBackgroundGradientBlack
+                  : appBackgroundGradient)),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -19,7 +21,7 @@ class OnBoarding3 extends StatelessWidget {
             children: [
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
-                opacity: 0.4,
+                opacity: context.isDark ? 1 : 0.4,
                 child: Image.asset(AppImages.onboarding3,
                     alignment: Alignment.bottomCenter,
                     fit: BoxFit.cover,
@@ -35,7 +37,7 @@ class OnBoarding3 extends StatelessWidget {
                   SizedBox(height: he(80)),
                   AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
-                    opacity: 0.8,
+                    opacity: context.isDark ? 1 : 0.8,
                     child: Image.asset(AppImages.leafRight,
                         alignment: Alignment.topLeft,
                         fit: BoxFit.cover,
@@ -54,7 +56,9 @@ class OnBoarding3 extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
+                        color: context.isDark
+                            ? mainGreenColorDark
+                            : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
                     width: 44.w,
@@ -62,7 +66,9 @@ class OnBoarding3 extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
+                        color: context.isDark
+                            ? mainGreenColorDark
+                            : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
                     width: 44.w,
@@ -70,7 +76,9 @@ class OnBoarding3 extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
+                        color: context.isDark
+                            ? mainGreenColorDark
+                            : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
                     width: 44.w,
@@ -104,7 +112,13 @@ class OnBoarding3 extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 54.w, right: 51.w),
                 child: Text(onboarding3,
-                    textAlign: TextAlign.center, style: mainTextStyle),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: AppfontFamily.inter,
+                        color:
+                            context.isDark ? mainTextColorDark : mainTextColor,
+                        fontWeight: AppFontWeight.w_400,
+                        fontSize: AppSizes.size_20)),
               ),
               const SizedBox(),
               SizedBox(height: he(100))
@@ -120,7 +134,6 @@ class OnBoarding3 extends StatelessWidget {
                       curve: Curves.easeIn);
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(6.r)),
                     fixedSize: const Size(double.infinity, 48)),

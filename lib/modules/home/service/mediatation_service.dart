@@ -2,6 +2,7 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
+import 'package:quranic_calm/modules/home/model/items_model.dart';
 
 class MediatationService {
   MediatationDb mediatationDb;
@@ -20,6 +21,31 @@ class MediatationService {
         debugPrint('$data');
         for (CategoryModel element in data) {
           await mediatationDb.insertCategory(element);
+        }
+        return right(data);
+      } else {
+        return left(
+            NetworkErrorResponse(response.statusMessage.toString()).error);
+      }
+    } on DioException catch (e) {
+      return left(NetworkExeptionResponse(e).messageForUser);
+    }
+  }
+
+  Future<Either<String, List<ItemsModel>>> getCategoryItemsList(
+      int categoryId) async {
+    try {
+      Response response = await Dio().get(AppUrls.categoryItems,
+          queryParameters: {'category_id': categoryId});
+      debugPrint("${response.statusCode} status code coming");
+
+      if (response.statusCode! >= 200 || response.statusCode! <= 299) {
+        List<ItemsModel> data = (response.data['data'] as List)
+            .map((e) => ItemsModel.fromJson(e))
+            .toList();
+        debugPrint('$data');
+        for (ItemsModel element in data) {
+          await mediatationDb.insertItems(element);
         }
         return right(data);
       } else {

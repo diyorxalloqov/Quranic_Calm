@@ -16,7 +16,9 @@ class CardWidget extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
-              color: numberContainerColor,
+              color: context.isDark
+                  ? numberContainerColorBlack
+                  : numberContainerColor,
               borderRadius: BorderRadius.circular(12.r)),
           child: Text(
             suraData.leading,

@@ -122,7 +122,6 @@ class _SleepTimePageState extends State<SleepTimerBottomSheet> {
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: buttonColor,
                         elevation: 0,
                         shadowColor: Colors.transparent,
                         shape: RoundedRectangleBorder(

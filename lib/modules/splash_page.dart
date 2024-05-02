@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:quranic_calm/core/constants/app/app_fontfamily.dart';
-import 'package:quranic_calm/core/constants/app/app_fontweight.dart';
-import 'package:quranic_calm/core/constants/app/app_sizes.dart';
-import 'package:quranic_calm/core/constants/keys.dart';
-import 'package:quranic_calm/core/db/shared_preferences.dart';
-import 'package:quranic_calm/core/constants/size/size_config.dart';
+import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

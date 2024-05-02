@@ -1,5 +1,4 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 class OnBoarding1 extends StatelessWidget {
   final PageController pageController;
@@ -9,14 +8,17 @@ class OnBoarding1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: appBackgroundGradient)),
+          gradient: LinearGradient(
+              colors: context.isDark
+                  ? appBackgroundGradientBlack
+                  : appBackgroundGradient)),
       child: Stack(
         children: [
           Align(
             alignment: Alignment.topCenter,
             child: AnimatedOpacity(
               duration: const Duration(milliseconds: 500),
-              opacity: 0.3,
+              opacity: context.isDark ? 0.6 : 0.3,
               child: Image.asset(
                 AppImages.leafLeft,
                 alignment: Alignment.center,
@@ -35,7 +37,9 @@ class OnBoarding1 extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2.r),
-                          color: mainGreenColor),
+                          color: context.isDark
+                              ? mainGreenColorDark
+                              : mainGreenColor),
                       margin: const EdgeInsets.only(right: 16),
                       height: 4,
                       width: 44.w,
@@ -85,7 +89,13 @@ class OnBoarding1 extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 54.w, top: he(50), right: 51.w),
                 child: Text(onboarding1,
-                    textAlign: TextAlign.center, style: mainTextStyle),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: AppfontFamily.inter,
+                        color:
+                            context.isDark ? mainTextColorDark : mainTextColor,
+                        fontWeight: AppFontWeight.w_400,
+                        fontSize: AppSizes.size_20)),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -94,7 +104,7 @@ class OnBoarding1 extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 15),
                     child: AnimatedOpacity(
                         duration: const Duration(milliseconds: 500),
-                        opacity: 0.3,
+                        opacity: context.isDark ? 0.6 : 0.3,
                         child: Image.asset(AppImages.leafRight,
                             alignment: Alignment.center)),
                   ),
@@ -108,7 +118,6 @@ class OnBoarding1 extends StatelessWidget {
                               curve: Curves.easeIn);
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: buttonColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6.r)),
                             fixedSize: const Size(double.infinity, 48)),

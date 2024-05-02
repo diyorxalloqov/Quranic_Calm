@@ -1,5 +1,4 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 class OnBoarding4 extends StatefulWidget {
   final PageController pageController;
@@ -16,7 +15,10 @@ class _OnBoarding4State extends State<OnBoarding4> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: appBackgroundGradient)),
+          gradient: LinearGradient(
+              colors: context.isDark
+                  ? appBackgroundGradientBlack
+                  : appBackgroundGradient)),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -26,7 +28,7 @@ class _OnBoarding4State extends State<OnBoarding4> {
               SizedBox(height: he(100)),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
-                opacity: 0.4,
+                opacity: context.isDark ? 0.6 : 0.4,
                 child: Image.asset(AppImages.leafLeft,
                     alignment: Alignment.bottomCenter,
                     fit: BoxFit.cover,
@@ -41,7 +43,7 @@ class _OnBoarding4State extends State<OnBoarding4> {
                   SizedBox(height: he(80)),
                   AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
-                    opacity: 0.4,
+                    opacity: context.isDark ? 0.6 : 0.4,
                     child: Image.asset(AppImages.leafRight,
                         alignment: Alignment.topLeft,
                         fit: BoxFit.cover,
@@ -60,7 +62,9 @@ class _OnBoarding4State extends State<OnBoarding4> {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
+                        color: context.isDark
+                            ? mainGreenColorDark
+                            : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
                     width: 44.w,
@@ -68,7 +72,9 @@ class _OnBoarding4State extends State<OnBoarding4> {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
+                        color: context.isDark
+                            ? mainGreenColorDark
+                            : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
                     width: 44.w,
@@ -76,7 +82,9 @@ class _OnBoarding4State extends State<OnBoarding4> {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
+                        color: context.isDark
+                            ? mainGreenColorDark
+                            : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
                     width: 44.w,
@@ -84,7 +92,9 @@ class _OnBoarding4State extends State<OnBoarding4> {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
-                        color: mainGreenColor),
+                        color: context.isDark
+                            ? mainGreenColorDark
+                            : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
                     width: 44.w,
@@ -142,7 +152,9 @@ class _OnBoarding4State extends State<OnBoarding4> {
                                           Container(
                                             padding: const EdgeInsets.all(10),
                                             decoration: BoxDecoration(
-                                                color: mainGreenColor,
+                                                color: context.isDark
+                                                    ? mainGreenColorDark
+                                                    : mainGreenColor,
                                                 borderRadius:
                                                     BorderRadius.circular(8.r)),
                                             child:
@@ -202,7 +214,6 @@ class _OnBoarding4State extends State<OnBoarding4> {
                           curve: Curves.easeIn);
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: buttonColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6.r)),
                         fixedSize: const Size(double.infinity, 48)),

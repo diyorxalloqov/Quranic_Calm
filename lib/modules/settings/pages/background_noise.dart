@@ -1,5 +1,4 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 class BackgroundNoise extends StatefulWidget {
   const BackgroundNoise({super.key});
@@ -34,7 +33,8 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                         children: [
                           GestureDetector(
                               onTap: () => Navigator.of(context).pop(),
-                              child: SvgPicture.asset(AppIcon.backButton)),
+                              child: SvgPicture.asset(AppIcon.backButton,
+                                  color: context.isDark ? Colors.white : null)),
                           Text(
                             backgroundNoise,
                             style: TextStyle(
@@ -42,7 +42,7 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                                 fontWeight: AppFontWeight.w_600,
                                 fontFamily: AppfontFamily.abhaya.fontFamily),
                           ),
-                          SizedBox(width: he(40)),
+                          SizedBox(width: wi(20)),
                         ],
                       ),
                       SizedBox(height: he(56)),
@@ -68,7 +68,9 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                                               padding:
                                                   const EdgeInsets.all(10.0),
                                               decoration: BoxDecoration(
-                                                  color: mainGreenColor,
+                                                  color: context.isDark
+                                                      ? backgroundNoiseBlackColor
+                                                      : mainGreenColor,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.r)),
@@ -107,10 +109,13 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                                                           sliderValues[index],
                                                       inactiveColor:
                                                           mainBlueColor,
-                                                      activeColor:
-                                                          mainGreenColor,
-                                                      thumbColor:
-                                                          mainGreenColor,
+                                                      activeColor: context
+                                                              .isDark
+                                                          ? backgroundNoiseBlackColor
+                                                          : mainGreenColor,
+                                                      thumbColor: context.isDark
+                                                          ? backgroundNoiseBlackColor
+                                                          : mainGreenColor,
                                                       onChanged: (v) {
                                                         setState(() {
                                                           sliderValues[index] =
@@ -139,7 +144,6 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                         ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: buttonColor,
                                 elevation: 0,
                                 shadowColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
@@ -150,9 +154,7 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                                 savePref,
                                 style: TextStyle(
                                     fontSize: AppSizes.size_20,
-                                    color: context.isDark
-                                        ? mainTextColor
-                                        : Colors.white,
+                                    color: Colors.white,
                                     fontWeight: AppFontWeight.w_600,
                                     fontFamily:
                                         AppfontFamily.abhaya.fontFamily),
@@ -166,8 +168,11 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                                 shadowColor: Colors.transparent,
                                 backgroundColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        color: Colors.black, width: 1),
+                                    side: BorderSide(
+                                        color: context.isDark
+                                            ? primaryColorBlack
+                                            : Colors.black,
+                                        width: 1),
                                     borderRadius: BorderRadius.circular(4.r)),
                                 fixedSize: const Size(double.infinity, 48)),
                             child: Center(
@@ -176,7 +181,7 @@ class _SleepTimePageState extends State<BackgroundNoise> {
                                 style: TextStyle(
                                     fontSize: AppSizes.size_20,
                                     color: context.isDark
-                                        ? Colors.white
+                                        ? primaryColorBlack
                                         : mainTextColor,
                                     fontWeight: AppFontWeight.w_600,
                                     fontFamily:

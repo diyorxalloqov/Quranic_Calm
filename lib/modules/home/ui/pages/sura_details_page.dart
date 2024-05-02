@@ -1,7 +1,6 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 import 'package:quranic_calm/modules/home/ui/widgets/sleepTimer_bottom_sheet.dart';
 import 'package:quranic_calm/modules/home/ui/widgets/voice_changer_bottom_sheet.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 class SuraDetailsPage extends StatelessWidget {
   const SuraDetailsPage({super.key});
@@ -11,9 +10,13 @@ class SuraDetailsPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: appBackgroundGradient),
-            image: const DecorationImage(
-                image: AssetImage(AppImages.clouds),
+            gradient: LinearGradient(
+                colors: context.isDark
+                    ? appBackgroundGradientBlack
+                    : appBackgroundGradient),
+            image: DecorationImage(
+                image: AssetImage(
+                    context.isDark ? AppImages.stars : AppImages.clouds),
                 alignment: Alignment.bottomCenter)),
         child: SafeArea(
           child: Column(
@@ -23,7 +26,8 @@ class SuraDetailsPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () => Navigator.of(context).pop(),
-                      child: SvgPicture.asset(AppIcon.backButton)),
+                      child: SvgPicture.asset(AppIcon.backButton,
+                          color: context.isDark ? iconBlackColors : null)),
                   Text(
                     'Baqara',
                     style: TextStyle(
@@ -32,7 +36,9 @@ class SuraDetailsPage extends StatelessWidget {
                         fontFamily: AppfontFamily.abhaya.fontFamily),
                   ),
                   GestureDetector(
-                      onTap: () {}, child: SvgPicture.asset(AppIcon.favourite)),
+                      onTap: () {},
+                      child: SvgPicture.asset(AppIcon.favourite,
+                          color: context.isDark ? iconBlackColors : null)),
                 ],
               ),
               const Spacer(),
@@ -41,12 +47,17 @@ class SuraDetailsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                      child: SvgPicture.asset(AppIcon.previous),
+                      child: SvgPicture.asset(context.isDark
+                          ? AppIcon.previousBlack
+                          : AppIcon.previous),
                     ),
                     Container(
                       padding: const EdgeInsets.all(15.0),
                       decoration: ShapeDecoration(
-                          color: mainPurpleColor, shape: const OvalBorder()),
+                          color: context.isDark
+                              ? primaryColorBlack
+                              : mainPurpleColor,
+                          shape: const OvalBorder()),
                       child: GestureDetector(
                         onTap: () {},
                         child: SvgPicture.asset(AppIcon.pause),
@@ -54,7 +65,8 @@ class SuraDetailsPage extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      child: SvgPicture.asset(AppIcon.next),
+                      child: SvgPicture.asset(
+                          context.isDark ? AppIcon.nextBlack : AppIcon.next),
                     )
                   ],
                 ),
@@ -80,7 +92,8 @@ class SuraDetailsPage extends StatelessWidget {
                 SizedBox(height: he(30)),
                 IconButton(
                     onPressed: () => showVoiceChangerBottomSheet(context),
-                    icon: SvgPicture.asset(AppIcon.volume)),
+                    icon: SvgPicture.asset(AppIcon.volume,
+                        color: context.isDark ? iconBlackColors : null)),
                 SizedBox(height: he(10)),
                 Text(setNoise,
                     style: const TextStyle(

@@ -1,3 +1,4 @@
+import 'package:quranic_calm/core/constants/app/app_colors.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
 class LanguagePage extends StatefulWidget {
@@ -33,7 +34,8 @@ class _SleepTimePageState extends State<LanguagePage> {
                         children: [
                           GestureDetector(
                               onTap: () => Navigator.of(context).pop(),
-                              child: SvgPicture.asset(AppIcon.backButton)),
+                              child: SvgPicture.asset(AppIcon.backButton,
+                                  color: context.isDark ? Colors.white : null)),
                           Text(
                             language,
                             style: TextStyle(
@@ -61,7 +63,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                                   color: selectedLang == 'uzbek'
                                       ? mainGreenColor.withOpacity(0.2)
                                       : context.isDark
-                                          ? Colors.black
+                                          ? mainPurpleColor
                                           : Colors.white,
                                 ),
                                 child: GestureDetector(
@@ -74,7 +76,9 @@ class _SleepTimePageState extends State<LanguagePage> {
                                     "Uzbek",
                                     style: TextStyle(
                                       color: selectedLang == 'uzbek'
-                                          ? Colors.black
+                                          ? context.isDark
+                                              ? Colors.white
+                                              : Colors.black
                                           : context.isDark
                                               ? Colors.white
                                               : Colors.black,
@@ -96,7 +100,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                                   color: selectedLang == 'english'
                                       ? mainGreenColor.withOpacity(0.2)
                                       : context.isDark
-                                          ? Colors.black
+                                          ? mainPurpleColor
                                           : Colors.white,
                                 ),
                                 child: GestureDetector(
@@ -109,7 +113,9 @@ class _SleepTimePageState extends State<LanguagePage> {
                                     "English",
                                     style: TextStyle(
                                       color: selectedLang == 'english'
-                                          ? Colors.black
+                                          ? context.isDark
+                                              ? Colors.white
+                                              : Colors.black
                                           : context.isDark
                                               ? Colors.white
                                               : Colors.black,
@@ -152,7 +158,6 @@ class _SleepTimePageState extends State<LanguagePage> {
                                   .add(GetCategoriesEvent());
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: buttonColor,
                                 elevation: 0,
                                 shadowColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
@@ -163,9 +168,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                                 savePref,
                                 style: TextStyle(
                                     fontSize: AppSizes.size_20,
-                                    color: context.isDark
-                                        ? mainTextColor
-                                        : Colors.white,
+                                    color: Colors.white,
                                     fontWeight: AppFontWeight.w_600,
                                     fontFamily:
                                         AppfontFamily.abhaya.fontFamily),
@@ -179,8 +182,11 @@ class _SleepTimePageState extends State<LanguagePage> {
                                 shadowColor: Colors.transparent,
                                 backgroundColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        color: Colors.black, width: 1),
+                                    side: BorderSide(
+                                        color: context.isDark
+                                            ? primaryColorBlack
+                                            : Colors.black,
+                                        width: 1),
                                     borderRadius: BorderRadius.circular(4.r)),
                                 fixedSize: const Size(double.infinity, 48)),
                             child: Center(
@@ -189,7 +195,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                                 style: TextStyle(
                                     fontSize: AppSizes.size_20,
                                     color: context.isDark
-                                        ? Colors.white
+                                        ? primaryColorBlack
                                         : mainTextColor,
                                     fontWeight: AppFontWeight.w_600,
                                     fontFamily:

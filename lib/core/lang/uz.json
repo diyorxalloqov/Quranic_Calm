@@ -33,5 +33,6 @@
     "startMediatations": "Start meditation",
     "suggestions": "Suggestions",
     "categories": "Categories",
-    "setNoise": "Set background noise"
+    "setNoise": "Set background noise",
+    "theme":"Theme"
 }

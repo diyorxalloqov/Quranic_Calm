@@ -6,6 +6,7 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
   if (StorageRepository.getString(Keys.lang) == '') {
+    print('storage empty');
     await StorageRepository.putString(Keys.lang, 'uzbek');
   }
   runApp(EasyLocalization(

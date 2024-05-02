@@ -26,7 +26,6 @@ export 'package:quranic_calm/core/lang/keys.dart';
 export 'package:quranic_calm/core/config/network_exeptions.dart';
 export 'package:quranic_calm/core/constants/api/app_urls.dart';
 export 'package:quranic_calm/core/db/mediatation_db.dart';
-export 'package:quranic_calm/modules/global/widgets/main_text_style.dart';
 export 'package:quranic_calm/core/constants/app/app_fontweight.dart';
 export 'package:quranic_calm/core/constants/app/app_sizes.dart';
 export 'package:flutter_svg/flutter_svg.dart';

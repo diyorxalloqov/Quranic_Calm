@@ -8,7 +8,10 @@ class MainBackgroundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: appBackgroundGradient)),
+          gradient: LinearGradient(
+              colors: context.isDark
+                  ? appBackgroundGradientBlack
+                  : appBackgroundGradient)),
       child: Stack(
         children: [
           Column(
@@ -17,7 +20,7 @@ class MainBackgroundWidget extends StatelessWidget {
               SizedBox(height: he(100)),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
-                opacity: 0.4,
+                opacity: context.isDark ? 0.8 : 0.4,
                 child: Image.asset(AppImages.leafLeft,
                     alignment: Alignment.bottomCenter,
                     fit: BoxFit.cover,
@@ -30,7 +33,7 @@ class MainBackgroundWidget extends StatelessWidget {
               SizedBox(height: he(80)),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
-                opacity: 0.4,
+                opacity: context.isDark ? 0.8 : 0.4,
                 child: Align(
                   alignment: Alignment.topRight,
                   child: Image.asset(AppImages.leafRight,

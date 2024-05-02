@@ -30,7 +30,8 @@ class _SettingsPageState extends State<SettingsPage> {
           Card(
             elevation: 0,
             child: ListTile(
-                leading: SvgPicture.asset(AppIcon.notification),
+                leading: SvgPicture.asset(AppIcon.notification,
+                    color: context.isDark ? primaryColorBlack : null),
                 title: Text(
                   notification,
                   style: TextStyle(
@@ -73,7 +74,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(8.r),
                           topRight: Radius.circular(8.r))),
-                  leading: SvgPicture.asset(AppIcon.language),
+                  leading: SvgPicture.asset(AppIcon.language,
+                      color: context.isDark ? primaryColorBlack : null),
                   title: Text(
                     language,
                     style: TextStyle(
@@ -89,7 +91,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ListTile(
                   onTap: () => Navigator.of(context, rootNavigator: true)
                       .pushNamed('sleepTime'),
-                  leading: SvgPicture.asset(AppIcon.clock),
+                  leading: SvgPicture.asset(AppIcon.clock,
+                      color: context.isDark ? primaryColorBlack : null),
                   title: Text(
                     sleepTime,
                     style: TextStyle(
@@ -110,7 +113,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(8.r),
                           bottomRight: Radius.circular(8.r))),
-                  leading: SvgPicture.asset(AppIcon.settingsGreen),
+                  leading: SvgPicture.asset(AppIcon.settingsGreen,
+                      color: context.isDark ? primaryColorBlack : null),
                   title: Text(
                     backgroundNoise,
                     style: TextStyle(
@@ -135,7 +139,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                   isSettingsPage: true,
                                   pageController: PageController()),
                             ))),
-                leading: SvgPicture.asset(AppIcon.subscription),
+                leading: SvgPicture.asset(AppIcon.subscription,
+                    color: context.isDark ? primaryColorBlack : null),
                 title: Text(
                   subscription,
                   style: TextStyle(
@@ -143,6 +148,48 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: context.isDark ? Colors.white : mainTextColor,
                     fontSize: AppSizes.size_16,
                     fontWeight: AppFontWeight.w_400,
+                  ),
+                ),
+              )),
+          const SizedBox(height: 10),
+          Card(
+              elevation: 0,
+              child: ListTile(
+                leading: SvgPicture.asset(AppIcon.subscription,
+                    color: context.isDark ? primaryColorBlack : null),
+                title: Text(
+                  theme,
+                  style: TextStyle(
+                    fontFamily: AppfontFamily.inter,
+                    color: context.isDark ? Colors.white : mainTextColor,
+                    fontSize: AppSizes.size_16,
+                    fontWeight: AppFontWeight.w_400,
+                  ),
+                ),
+                trailing: Transform.scale(
+                  scale: 0.7,
+                  child: Switch.adaptive(
+                    focusColor: Colors.black,
+                    activeColor: Colors.black,
+                    activeTrackColor: Colors.white,
+                    inactiveTrackColor: Colors.white,
+                    applyCupertinoTheme: true,
+                    trackOutlineColor: const MaterialStatePropertyAll<Color>(
+                        Color(0xff2C2E41)),
+                    value: Platform.isIOS
+                        ? CupertinoAdaptiveTheme.of(context).mode.isDark
+                        : AdaptiveTheme.of(context).mode.isDark,
+                    onChanged: (value) {
+                      if (value) {
+                        Platform.isIOS
+                            ? CupertinoAdaptiveTheme.of(context).setDark()
+                            : AdaptiveTheme.of(context).setDark();
+                      } else {
+                        Platform.isIOS
+                            ? CupertinoAdaptiveTheme.of(context).setLight()
+                            : AdaptiveTheme.of(context).setLight();
+                      }
+                    },
                   ),
                 ),
               ))

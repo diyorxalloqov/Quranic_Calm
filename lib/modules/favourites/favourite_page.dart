@@ -24,12 +24,15 @@ class _FavouritePageState extends State<FavouritePage> {
         SizedBox(height: he(12)),
         Expanded(
             child: ListView.builder(
-                itemCount: 10,
+                itemCount: 10 + 1,
                 itemBuilder: (context, index) {
+                  if (index == 10) {
+                    return SizedBox(height: he(30));
+                  }
                   return Card(
                     elevation: 0,
                     margin: EdgeInsets.symmetric(
-                        horizontal: wi(32), vertical: wi(10)),
+                        horizontal: wi(32), vertical: wi(10.5)),
                     child: ListTile(
                       title: Text(
                         'Baqara',
@@ -51,7 +54,10 @@ class _FavouritePageState extends State<FavouritePage> {
                         children: [
                           GestureDetector(
                               onTap: () {},
-                              child: SvgPicture.asset(AppIcon.favouriteGreen)),
+                              child: SvgPicture.asset(AppIcon.favouriteGreen,
+                                  color: context.isDark
+                                      ? primaryColorBlack
+                                      : null)),
                           Text(
                             '45:00',
                             style: TextStyle(
@@ -63,7 +69,7 @@ class _FavouritePageState extends State<FavouritePage> {
                       ),
                     ),
                   );
-                }))
+                })),
       ],
     );
   }

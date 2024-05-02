@@ -22,10 +22,11 @@ class AppTheme {
     // elevatedButtonTheme: ElevatedButtonThemeData(
     //     style: ElevatedButton.styleFrom(backgroundColor: primaryColor)),
     brightness: Brightness.light,
+    cardTheme: CardTheme(color: cardColor),
+    textTheme: TextTheme(),
     // bottomNavigationBarTheme:
     //     BottomNavigationBarThemeData(backgroundColor: bottomNavbarColor),
     // scaffoldBackgroundColor: scaffoldColor,
-    // cardColor: cardColor,
     cupertinoOverrideTheme: CupertinoThemeData(
       applyThemeToAll: true,
       brightness: Brightness.light,
@@ -36,6 +37,9 @@ class AppTheme {
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
     }),
     visualDensity: VisualDensity.adaptivePlatformDensity,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(backgroundColor: buttonColor)),
+
     // bottomAppBarTheme: BottomAppBarTheme(color: bottomAppbarColor),
     // appBarTheme: AppBarTheme(backgroundColor: appBarColor)
 
@@ -50,7 +54,7 @@ class AppTheme {
     brightness: Brightness.dark,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     // bottomAppBarTheme: BottomAppBarTheme(color: bottomAppbarBlackColor),
-    // cardColor: cardBlackColor,
+    cardTheme: CardTheme(color: cardColorDark),
     cupertinoOverrideTheme: CupertinoThemeData(
       applyThemeToAll: true,
       brightness: Brightness.dark,
@@ -65,11 +69,8 @@ class AppTheme {
     // bottomNavigationBarTheme:
     // BottomNavigationBarThemeData(backgroundColor: bottomNavbarBlackColor),
     // appBarTheme: AppBarTheme(backgroundColor: appBarBlackColor),
-    // scaffoldBackgroundColor: scaffoldBlackColor
-    // elevatedButtonTheme: ElevatedButtonThemeData(
-    //     style: ElevatedButton.styleFrom(
-    //         backgroundColor: Colors.blueGrey.shade800)),
-    // scaffoldBackgroundColor: Colors.blueGrey.shade900,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(backgroundColor: buttonColorDark)),
     // bottomNavigationBarTheme: BottomNavigationBarThemeData(
     //   backgroundColor: Colors.blueGrey.shade900,
     // ),
