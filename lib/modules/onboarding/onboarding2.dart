@@ -36,51 +36,51 @@ class OnBoarding2 extends StatelessWidget {
             children: [
               SafeArea(
                   child: Padding(
-                      padding: EdgeInsets.only(left: 32.w, top: he(10)),
+                      padding: EdgeInsets.only(left: wi(32), top: he(10)),
                       child: Row(children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.r),
+                              borderRadius: BorderRadius.circular(2),
                               color: context.isDark
                                   ? mainGreenColorDark
                                   : mainGreenColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.r),
+                              borderRadius: BorderRadius.circular(2),
                               color: context.isDark
                                   ? mainGreenColorDark
                                   : mainGreenColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.r),
+                              borderRadius: BorderRadius.circular(2),
                               color: mainBlueColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.r),
+                              borderRadius: BorderRadius.circular(2),
                               color: mainBlueColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.r),
+                              borderRadius: BorderRadius.circular(2),
                               color: mainBlueColor),
                           margin: const EdgeInsets.only(right: 16),
                           height: 4,
-                          width: 44.w,
+                          width: wi(44),
                         ),
                         const Text(
                           '40 %',
@@ -94,7 +94,7 @@ class OnBoarding2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 51.w, right: 52.w),
+                    padding: EdgeInsets.only(left: wi(51), right: wi(52)),
                     child: Text(onboarding2,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -125,7 +125,7 @@ class OnBoarding2 extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6.r)),
+                                borderRadius: BorderRadius.circular(6)),
                             fixedSize: const Size(double.infinity, 48)),
                         child: Center(
                           child: Text(

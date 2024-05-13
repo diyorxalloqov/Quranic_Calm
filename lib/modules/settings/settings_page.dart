@@ -1,3 +1,4 @@
+import 'package:auto_start_flutter/auto_start_flutter.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 import 'package:quranic_calm/modules/onboarding/onboarding5.dart';
 
@@ -9,7 +10,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool isNotificationEnabled = false;
+  bool isNotificationEnabled = StorageRepository.getBool(Keys.notification);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,11 +36,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: Text(
                   notification,
                   style: TextStyle(
-                    fontFamily: AppfontFamily.inter,
-                    color: context.isDark ? Colors.white : mainTextColor,
-                    fontSize: AppSizes.size_16,
-                    fontWeight: AppFontWeight.w_400,
-                  ),
+                      fontFamily: AppfontFamily.inter,
+                      color: context.isDark ? Colors.white : mainTextColor,
+                      fontSize: AppSizes.size_16,
+                      fontWeight: AppFontWeight.w_400),
                 ),
                 trailing: Transform.scale(
                   scale: 0.7,
@@ -52,9 +52,42 @@ class _SettingsPageState extends State<SettingsPage> {
                     trackOutlineColor: const MaterialStatePropertyAll<Color>(
                         Color(0xff2C2E41)),
                     value: isNotificationEnabled,
-                    onChanged: (v) {
+                    onChanged: (v) async {
                       isNotificationEnabled = v;
                       setState(() {});
+                      context
+                          .read<MediatationBloc>()
+                          .add(ScheduleNotificationEvent());
+                      await StorageRepository.putBool(
+                          Keys.notification, isNotificationEnabled);
+                      if (await initAutoStart() != null &&
+                          await initAutoStart() == true &&
+                          v) {
+                        showAdaptiveDialog(
+                            context: context,
+                            builder: (context) => AlertDialog.adaptive(
+                                  content: Text(
+                                      "Iltimos auto start ruxsatnomasini yoqing"),
+                                  actions: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const SizedBox.shrink(),
+                                        ElevatedButton(
+                                            onPressed: () async {
+                                              await initAutoStart();
+                                            },
+                                            child: Text(
+                                              'Ha',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ))
+                                      ],
+                                    )
+                                  ],
+                                ));
+                      }
                     },
                   ),
                 )),
@@ -62,18 +95,18 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 10),
           Card(
             elevation: 0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.r)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             child: Column(
               children: [
                 ListTile(
                   onTap: () => Navigator.of(context, rootNavigator: true)
                       .pushNamed('languagePage'),
                   visualDensity: VisualDensity.adaptivePlatformDensity,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(8.r),
-                          topRight: Radius.circular(8.r))),
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8))),
                   leading: SvgPicture.asset(AppIcon.language,
                       color: context.isDark ? primaryColorBlack : null),
                   title: Text(
@@ -109,10 +142,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   onTap: () => Navigator.of(context, rootNavigator: true)
                       .pushNamed('backgroundNoise'),
                   visualDensity: VisualDensity.adaptivePlatformDensity,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8.r),
-                          bottomRight: Radius.circular(8.r))),
+                          bottomLeft: Radius.circular(8),
+                          bottomRight: Radius.circular(8))),
                   leading: SvgPicture.asset(AppIcon.settingsGreen,
                       color: context.isDark ? primaryColorBlack : null),
                   title: Text(
@@ -197,4 +230,19 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
+}
+
+Future<bool?> initAutoStart() async {
+  try {
+    //check auto-start availability.
+    var test = await isAutoStartAvailable;
+    print("$test is auto start available");
+    //if available then navigate to auto-start setting page.
+    if (test ?? false) await getAutoStartPermission();
+    return test;
+  } on PlatformException catch (e) {
+    print(e);
+    return null;
+  }
+  // if (!mounted) return;
 }

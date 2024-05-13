@@ -10,6 +10,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    context.read<MediatationBloc>().add(GetCategoriesEvent());
+    StorageRepository.getBool(Keys.notification)
+        ? context.read<MediatationBloc>().add(ScheduleNotificationEvent())
+        : null;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) => SingleChildScrollView(
         child: BlocBuilder<MediatationBloc, MediatationState>(
           builder: (context, state) {
@@ -49,6 +58,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 250),
                           ),
                         ),
+                        SizedBox(height: context.height / 1.5),
                       ],
                     ),
                     Positioned(
@@ -75,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                             decoration: BoxDecoration(
                                 color:
                                     context.isDark ? darkColor : Colors.white,
-                                borderRadius: BorderRadius.circular(12.r)),
+                                borderRadius: BorderRadius.circular(12)),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -87,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                                       fontWeight: AppFontWeight.w_400),
                                 ),
                                 SizedBox(height: he(8)),
-                                const Row(
+                                Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -96,50 +106,80 @@ class _HomePageState extends State<HomePage> {
                                             fontSize: AppSizes.size_14,
                                             fontFamily: AppfontFamily.inter,
                                             fontWeight: AppFontWeight.w_400)),
-                                    Text('05:34',
-                                        style: TextStyle(
-                                            fontSize: AppSizes.size_16,
-                                            fontFamily: AppfontFamily.inter,
-                                            fontWeight: AppFontWeight.w_400)),
+                                    StreamBuilder(
+                                        stream: context
+                                            .read<MediatationBloc>()
+                                            .audioPlayer
+                                            .positionStream,  
+                                        builder: (context, snapshot) {
+                                          return Text(
+                                              "${snapshot.data?.inHours == 0 ? '' : "${snapshot.data?.inHours}:"}${snapshot.data?.inMinutes}:${snapshot.data?.inSeconds}",
+                                              style: const TextStyle(
+                                                  fontSize: AppSizes.size_16,
+                                                  fontFamily:
+                                                      AppfontFamily.inter,
+                                                  fontWeight:
+                                                      AppFontWeight.w_400));
+                                        }),
                                   ],
                                 ),
                                 SizedBox(height: he(12)),
-                                LinearProgressIndicator(
-                                  borderRadius: BorderRadius.circular(6.r),
-                                  backgroundColor: mainBlueColor,
-                                  color: context.isDark
-                                      ? primaryColorBlack
-                                      : mainGreenColor,
-                                  value: 0.56,
-                                )
+                                StreamBuilder(
+                                    stream: context
+                                        .read<MediatationBloc>()
+                                        .audioPlayer
+                                        .durationStream,
+                                    builder: (context, snapshot) {
+                                      return LinearProgressIndicator(
+                                        borderRadius: BorderRadius.circular(6),
+                                        backgroundColor: mainBlueColor,
+                                        color: context.isDark
+                                            ? primaryColorBlack
+                                            : mainGreenColor,
+                                        value:
+                                            snapshot.data?.inSeconds.toDouble(),
+                                      );
+                                    })
                               ],
                             ),
                           ),
                           SizedBox(height: he(19)),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 32),
-                            child: Text(
-                              suggestions,
-                              style: TextStyle(
-                                  fontSize: AppSizes.size_20,
-                                  color: context.isDark
-                                      ? Colors.white
-                                      : Colors.black,
-                                  fontFamily: AppfontFamily.abhaya.fontFamily,
-                                  fontWeight: AppFontWeight.w_600),
-                            ),
-                          ),
-                          SizedBox(height: he(16)),
-                          ConstrainedBox(
-                              constraints: BoxConstraints(maxHeight: he(130)),
-                              child: ListView.builder(
-                                  itemCount: 20,
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: wi(24)),
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    return const SuggestionWidget();
-                                  })),
+                          state.suggestionItems.isEmpty
+                              ? const SizedBox.shrink()
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 32),
+                                      child: Text(
+                                        suggestions,
+                                        style: TextStyle(
+                                            fontSize: AppSizes.size_20,
+                                            color: context.isDark
+                                                ? Colors.white
+                                                : Colors.black,
+                                            fontFamily:
+                                                AppfontFamily.abhaya.fontFamily,
+                                            fontWeight: AppFontWeight.w_600),
+                                      ),
+                                    ),
+                                    SizedBox(height: he(16)),
+                                    ConstrainedBox(
+                                        constraints:
+                                            BoxConstraints(maxHeight: he(130)),
+                                        child: ListView.builder(
+                                            itemCount:
+                                                state.suggestionItems.length,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: wi(24)),
+                                            scrollDirection: Axis.horizontal,
+                                            itemBuilder: (context, index) {
+                                              return SuggestionWidget(
+                                                  index: index, state: state);
+                                            })),
+                                  ],
+                                ),
                           SizedBox(height: he(24)),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32),

@@ -36,7 +36,7 @@ class _CategoryWidgetState extends State<CategoryWidget>
                   labelPadding: const EdgeInsets.only(left: 16),
                   dividerColor: Colors.transparent,
                   padding: const EdgeInsets.only(left: 12),
-                  splashBorderRadius: BorderRadius.circular(24.r),
+                  splashBorderRadius: BorderRadius.circular(24),
                   indicator: ShapeDecoration(
                     color: context.isDark ? primaryColorBlack : mainGreenColor,
                     shape: RoundedRectangleBorder(
@@ -45,7 +45,7 @@ class _CategoryWidgetState extends State<CategoryWidget>
                                 ? primaryColorBlack
                                 : mainGreenColor,
                             width: 1),
-                        borderRadius: BorderRadius.circular(24.r)),
+                        borderRadius: BorderRadius.circular(24)),
                   ),
                   labelStyle: const TextStyle(
                       fontSize: 12,
@@ -60,48 +60,47 @@ class _CategoryWidgetState extends State<CategoryWidget>
                   isScrollable: true,
                   indicatorPadding: const EdgeInsets.symmetric(vertical: 1),
                   tabAlignment: TabAlignment.start,
-                  tabs: List.generate(
-                      widget.state.categoryModel.length,
-                      (index1) => InkWell(
-                            onTap: () {
-                              _tabController.animateTo(index1,
-                                  duration: Duration.zero,
-                                  curve: Curves.easeIn);
-                              context.read<MediatationBloc>().add(GetItemsEvent(
-                                    categoryId: widget.state
-                                            .categoryModel[index1].categoryId ??
-                                        0,
-                                  ));
-                            },
-                            highlightColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            child: Tab(
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24, vertical: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(24.r),
-                                  border: Border.all(
-                                      color: context.isDark
-                                          ? primaryColorBlack
-                                          : mainGreenColor,
-                                      width: 1.5),
-                                ),
-                                child: Text(
-                                  widget
-                                      .state.categoryModel[index1].categoryName
-                                      .toString(),
-                                  style: TextStyle(
-                                      fontFamily: AppfontFamily.inter,
-                                      fontWeight: AppFontWeight.w_400,
-                                      fontSize: AppSizes.size_12,
-                                      color: context.isDark
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                              ),
-                            ),
-                          ))),
+                  tabs: List.generate(widget.state.categoryModel.length,
+                      (index1) {
+                    return InkWell(
+                      onTap: () {
+                        _tabController.animateTo(index1,
+                            duration: Duration.zero, curve: Curves.easeIn);
+                        context.read<MediatationBloc>().add(GetItemsEvent(
+                              categoryId: widget
+                                      .state.categoryModel[index1].categoryId ??
+                                  0,
+                            ));
+                      },
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      child: Tab(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            border: Border.all(
+                                color: context.isDark
+                                    ? primaryColorBlack
+                                    : mainGreenColor,
+                                width: 1.5),
+                          ),
+                          child: Text(
+                            widget.state.categoryModel[index1].categoryName
+                                .toString(),
+                            style: TextStyle(
+                                fontFamily: AppfontFamily.inter,
+                                fontWeight: AppFontWeight.w_400,
+                                fontSize: AppSizes.size_12,
+                                color: context.isDark
+                                    ? Colors.white
+                                    : Colors.black),
+                          ),
+                        ),
+                      ),
+                    );
+                  })),
               widget.state.itemsStatus == ActionStatus.isSuccess
                   ? ListView.builder(
                       itemCount: widget.state.itemsModel.length,
@@ -109,46 +108,25 @@ class _CategoryWidgetState extends State<CategoryWidget>
                       physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.symmetric(vertical: 32),
                       itemBuilder: (context, index) {
-                        return CardWidget(
-                          suraData: SuraData(
-                              leading: widget.state.itemsModel.length == 114
-                                  ? numbers[index]
-                                  : widget.state.itemsModel[index].itemName
-                                          ?.substring(0, 1) ??
-                                      '',
-                              title:
-                                  widget.state.itemsModel[index].itemName ?? '',
-                              index: index,
-                              subtitle: widget.state.itemsModel[index]
-                                      .itemDescription ??
-                                  '',
-                              trailing:
-                                  widget.state.itemsModel[index].itemTime ??
-                                      ''),
-                        );
+                        return CardWidget(index: index, state: widget.state);
                       })
                   : widget.state.itemsStatus == ActionStatus.isError
-                      ? Center(
-                          child: SizedBox(
-                              height: he(Platform.isAndroid || Platform.isIOS
-                                  ? 250
-                                  : 400),
-                              child: Text(widget.state.itemsError)),
-                        )
+                      ? SizedBox(
+                          height: he(
+                              Platform.isAndroid || Platform.isIOS ? 270 : 400),
+                          child: Center(child: Text(widget.state.itemsError)))
                       : SizedBox(
                           height: he(
-                              Platform.isAndroid || Platform.isIOS ? 250 : 400),
+                              Platform.isAndroid || Platform.isIOS ? 270 : 400),
                           child: const Center(
-                              child: CircularProgressIndicator.adaptive()),
-                        ),
+                              child: CircularProgressIndicator.adaptive())),
             ],
           )
         : widget.state.status == ActionStatus.isLoading
             ? SizedBox(
                 height: he(Platform.isAndroid || Platform.isIOS ? 350 : 500),
                 child:
-                    const Center(child: CircularProgressIndicator.adaptive()),
-              )
+                    const Center(child: CircularProgressIndicator.adaptive()))
             : SizedBox(
                 height: he(Platform.isAndroid || Platform.isIOS ? 350 : 500),
                 child: Center(child: Text(widget.state.error)));

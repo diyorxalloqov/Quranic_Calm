@@ -50,6 +50,53 @@ class StorageRepository {
     return _preferences!.remove(key);
   }
 
+  // Save List<bool>
+  static Future<bool>? putBoolList(String key, List<bool> value) {
+    if (_preferences == null) return null;
+    List<String> boolStrings =
+        value.map((boolValue) => boolValue.toString()).toList();
+    return _preferences!.setStringList(key, boolStrings);
+  }
+
+  // Get List<bool>
+  static List<bool> getBoolList(String key, {List<bool> defValue = const []}) {
+    if (_preferences == null) return defValue;
+    List<String>? boolStrings = _preferences!.getStringList(key);
+    if (boolStrings == null) return defValue;
+    return boolStrings.map((boolString) => boolString == 'true').toList();
+  }
+
+  // Delete List<bool>
+  static Future<bool>? deleteBoolList(String key) {
+    if (_preferences == null) return null;
+    return _preferences!.remove(key);
+  }
+
+  // save List<double>
+  static Future<bool>? putdoubleList(String key, List<double> value) {
+    if (_preferences == null) return null;
+    List<String> doubleStrings =
+        value.map((doubleValue) => doubleValue.toString()).toList();
+    return _preferences!.setStringList(key, doubleStrings);
+  }
+
+  // Get List<double>
+  static List<double> getdoubleList(String key,
+      {List<double> defValue = const []}) {
+    if (_preferences == null) return defValue;
+    List<String>? doubleStrings = _preferences!.getStringList(key);
+    if (doubleStrings == null) return defValue;
+    return doubleStrings
+        .map((doubleString) => double.parse(doubleString))
+        .toList();
+  }
+
+  // Delete List<double>
+  static Future<bool>? deletedoubleList(String key) {
+    if (_preferences == null) return null;
+    return _preferences!.remove(key);
+  }
+
   /////// STRING
 
   static String getString(String key, {String defValue = ''}) {

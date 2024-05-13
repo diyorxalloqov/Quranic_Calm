@@ -1,11 +1,11 @@
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
-import 'package:quranic_calm/utils/extension/size.dart';
 
 showSleepTimerBottomSheet(BuildContext context) {
   showModalBottomSheet(
       isDismissible: true,
+      barrierColor: context.isDark ? Colors.transparent : null,
       context: context,
-      backgroundColor: context.isDark ? Colors.black : Colors.white,
+      backgroundColor: context.isDark ? darkColor : Colors.white,
       builder: (context) => const SleepTimerBottomSheet());
 }
 
@@ -18,6 +18,15 @@ class SleepTimerBottomSheet extends StatefulWidget {
 
 class _SleepTimePageState extends State<SleepTimerBottomSheet> {
   bool isSleepTime = false;
+  late TextEditingController _sleepTimeController;
+  @override
+  void initState() {
+    _sleepTimeController = TextEditingController();
+    _sleepTimeController.text =
+        StorageRepository.getString(Keys.sleepTimeCount);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,6 +51,8 @@ class _SleepTimePageState extends State<SleepTimerBottomSheet> {
                 children: [
                   Center(
                     child: TextField(
+                      maxLength: 10,
+                      controller: _sleepTimeController,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontFamily: AppfontFamily.inter,
@@ -49,12 +60,13 @@ class _SleepTimePageState extends State<SleepTimerBottomSheet> {
                           fontWeight: AppFontWeight.w_400),
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                          counterText: '',
                           focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r),
+                              borderRadius: BorderRadius.circular(12),
                               borderSide: const BorderSide(
                                   color: Colors.black, width: 1)),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r),
+                              borderRadius: BorderRadius.circular(12),
                               borderSide: const BorderSide(
                                   color: Colors.black, width: 1)),
                           constraints: BoxConstraints(
@@ -120,43 +132,23 @@ class _SleepTimePageState extends State<SleepTimerBottomSheet> {
             child: Column(
               children: [
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<MediatationBloc>().add(
+                          SetTimerEvent(timeCount: _sleepTimeController.text));
+                      Navigator.pop(context);
+                    },
                     style: ElevatedButton.styleFrom(
                         elevation: 0,
                         shadowColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.r)),
+                            borderRadius: BorderRadius.circular(4)),
                         fixedSize: const Size(double.infinity, 48)),
                     child: Center(
                       child: Text(
                         savePref,
                         style: TextStyle(
                             fontSize: AppSizes.size_20,
-                            color:
-                                context.isDark ? mainTextColor : Colors.white,
-                            fontWeight: AppFontWeight.w_600,
-                            fontFamily: AppfontFamily.abhaya.fontFamily),
-                      ),
-                    )),
-                SizedBox(height: he(24)),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        backgroundColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                            side:
-                                const BorderSide(color: Colors.black, width: 1),
-                            borderRadius: BorderRadius.circular(4.r)),
-                        fixedSize: const Size(double.infinity, 48)),
-                    child: Center(
-                      child: Text(
-                        startMediatations,
-                        style: TextStyle(
-                            fontSize: AppSizes.size_20,
-                            color:
-                                context.isDark ? Colors.white : mainTextColor,
+                            color: Colors.white,
                             fontWeight: AppFontWeight.w_600,
                             fontFamily: AppfontFamily.abhaya.fontFamily),
                       ),

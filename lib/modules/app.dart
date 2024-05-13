@@ -22,8 +22,21 @@ class App extends StatelessWidget {
   }
 }
 
-class AndroidApp extends StatelessWidget {
+class AndroidApp extends StatefulWidget {
   const AndroidApp({super.key});
+
+  @override
+  State<AndroidApp> createState() => _AndroidAppState();
+}
+
+class _AndroidAppState extends State<AndroidApp> with WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.hidden ||
+        state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.detached) {}
+    super.didChangeAppLifecycleState(state);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,22 +46,19 @@ class AndroidApp extends StatelessWidget {
       dark: AppTheme().darkMode,
       light: AppTheme().lightMode,
       builder: (ThemeData theme, ThemeData dark) {
-        return ScreenUtilInit(
-          designSize: kIsWeb ? const Size(1440, 1024) : const Size(393, 852),
-          builder: (context, child) => MultiBlocProvider(
-            providers: [BlocProvider(create: (context) => MediatationBloc())],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              darkTheme: AppTheme().darkMode,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              theme: theme,
-              themeMode: ThemeMode.system,
-              navigatorKey: App.navigatorKey,
-              initialRoute: '/',
-              onGenerateRoute: RouteList.router.onGenerate,
-            ),
+        return MultiBlocProvider(
+          providers: [BlocProvider(create: (context) => MediatationBloc())],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            darkTheme: AppTheme().darkMode,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            theme: theme,
+            themeMode: ThemeMode.system,
+            navigatorKey: App.navigatorKey,
+            initialRoute: '/',
+            onGenerateRoute: RouteList.router.onGenerate,
           ),
         );
       },
@@ -67,24 +77,19 @@ class IosApp extends StatelessWidget {
         dark: AppTheme().cupertinoDarkMode,
         light: AppTheme().cupertinoLightMode,
         builder: (CupertinoThemeData theme) {
-          return ScreenUtilInit(
-              designSize:
-                  kIsWeb ? const Size(1440, 1024) : const Size(393, 852),
-              builder: (context, child) => MultiBlocProvider(
-                    providers: [
-                      BlocProvider(create: (context) => MediatationBloc())
-                    ],
-                    child: CupertinoApp(
-                      debugShowCheckedModeBanner: false,
-                      navigatorKey: App.navigatorKey,
-                      initialRoute: '/',
-                      theme: theme,
-                      localizationsDelegates: context.localizationDelegates,
-                      supportedLocales: context.supportedLocales,
-                      locale: context.locale,
-                      onGenerateRoute: RouteList.router.onGenerate,
-                    ),
-                  ));
+          return MultiBlocProvider(
+            providers: [BlocProvider(create: (context) => MediatationBloc())],
+            child: CupertinoApp(
+              debugShowCheckedModeBanner: false,
+              navigatorKey: App.navigatorKey,
+              initialRoute: '/',
+              theme: theme,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              onGenerateRoute: RouteList.router.onGenerate,
+            ),
+          );
         });
   }
 }
@@ -100,22 +105,19 @@ class WebApp extends StatelessWidget {
       dark: AppTheme().darkMode,
       light: AppTheme().lightMode,
       builder: (ThemeData theme, ThemeData dark) {
-        return ScreenUtilInit(
-          designSize: kIsWeb ? const Size(1440, 1024) : const Size(393, 852),
-          builder: (context, child) => MultiBlocProvider(
-            providers: [BlocProvider(create: (context) => MediatationBloc())],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              darkTheme: AppTheme().darkMode,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              theme: theme,
-              themeMode: ThemeMode.system,
-              navigatorKey: App.navigatorKey,
-              initialRoute: '/',
-              onGenerateRoute: RouteList.router.onGenerate,
-            ),
+        return MultiBlocProvider(
+          providers: [BlocProvider(create: (context) => MediatationBloc())],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            darkTheme: AppTheme().darkMode,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            theme: theme,
+            themeMode: ThemeMode.system,
+            navigatorKey: App.navigatorKey,
+            initialRoute: '/',
+            onGenerateRoute: RouteList.router.onGenerate,
           ),
         );
       },
@@ -134,23 +136,16 @@ class MacosApp extends StatelessWidget {
         dark: AppTheme().cupertinoDarkMode,
         light: AppTheme().cupertinoLightMode,
         builder: (CupertinoThemeData theme) {
-          return ScreenUtilInit(
-              designSize: kIsWeb ? const Size(1440, 900) : const Size(393, 852),
-              builder: (context, child) => MultiBlocProvider(
-                    providers: [
-                      BlocProvider(create: (context) => MediatationBloc())
-                    ],
-                    child: CupertinoApp(
-                      debugShowCheckedModeBanner: false,
-                      navigatorKey: App.navigatorKey,
-                      initialRoute: '/',
-                      theme: theme,
-                      localizationsDelegates: context.localizationDelegates,
-                      supportedLocales: context.supportedLocales,
-                      locale: context.locale,
-                      onGenerateRoute: RouteList.router.onGenerate,
-                    ),
-                  ));
+          return CupertinoApp(
+            debugShowCheckedModeBanner: false,
+            navigatorKey: App.navigatorKey,
+            initialRoute: '/',
+            theme: theme,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            onGenerateRoute: RouteList.router.onGenerate,
+          );
         });
   }
 }

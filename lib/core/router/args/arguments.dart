@@ -1,13 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
 class SuralarDetailsPageArguments {
-  final String suraName;
-  final int suraVerseCount;
-  final int suraId;
   final int index;
+  final MediatationBloc mediatationBloc;
   SuralarDetailsPageArguments(
-      {required this.suraName,
-      required this.index,
-      required this.suraVerseCount,
-      required this.suraId});
+      {required this.index, required this.mediatationBloc});
 }

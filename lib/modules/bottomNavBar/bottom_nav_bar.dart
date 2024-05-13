@@ -29,7 +29,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         bottomNavigationBar: PersistentTabView(context,
             controller: _controller,
             navBarHeight: he(79),
-            popAllScreensOnTapAnyTabs: true,
             screens: _screens, onItemSelected: (value) {
       _currentIndex = value;
       setState(() {});
@@ -55,10 +54,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             handleAndroidBackButtonPress: true,
             hideNavigationBarWhenKeyboardShows: true,
             popActionScreens: PopActionScreensType.once,
-            decoration: NavBarDecoration(
+            decoration: const NavBarDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24.r),
-                    topRight: Radius.circular(24.r))),
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24))),
             popAllScreensOnTapOfSelectedTab: true,
             resizeToAvoidBottomInset: true,
             stateManagement: true,

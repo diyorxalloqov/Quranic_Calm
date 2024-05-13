@@ -24,7 +24,7 @@ class RouteList {
       case "languagePage":
         return _navigate(const LanguagePage());
       case "suraDetailsPage":
-        return _navigate(const SuraDetailsPage());
+        return _navigate(SuraDetailsPage(index: settings.arguments as int));
     }
     return null;
   }

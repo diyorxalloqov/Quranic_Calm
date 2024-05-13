@@ -30,9 +30,10 @@
     "or": "or",
     "shutDownSuraFinish": "shut down when the surah finishes",
     "savePref": "Save preferences",
-    "startMediatations": "Start meditation",
     "suggestions": "Suggestions",
     "categories": "Categories",
     "setNoise": "Set background noise",
-    "theme":"Theme"
+    "theme": "Theme",
+    "favouriteItems": "Saqlangan audiolar mavjud emas",
+    "wait": "Iltimos kuting..."
 }

@@ -51,53 +51,53 @@ class OnBoarding3 extends StatelessWidget {
             children: [
               SafeArea(
                   child: Padding(
-                padding: EdgeInsets.only(left: 32.w, top: he(10)),
+                padding: EdgeInsets.only(left: wi(32), top: he(10)),
                 child: Row(children: [
                   Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
+                        borderRadius: BorderRadius.circular(2),
                         color: context.isDark
                             ? mainGreenColorDark
                             : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
-                    width: 44.w,
+                    width: wi(44),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
+                        borderRadius: BorderRadius.circular(2),
                         color: context.isDark
                             ? mainGreenColorDark
                             : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
-                    width: 44.w,
+                    width: wi(44),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
+                        borderRadius: BorderRadius.circular(2),
                         color: context.isDark
                             ? mainGreenColorDark
                             : mainGreenColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
-                    width: 44.w,
+                    width: wi(44),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
+                        borderRadius: BorderRadius.circular(2),
                         color: mainBlueColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
-                    width: 44.w,
+                    width: wi(44),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.r),
+                        borderRadius: BorderRadius.circular(2),
                         color: mainBlueColor),
                     margin: const EdgeInsets.only(right: 16),
                     height: 4,
-                    width: 44.w,
+                    width: wi(44),
                   ),
                   const Text(
                     '60 %',
@@ -110,7 +110,7 @@ class OnBoarding3 extends StatelessWidget {
               )),
               const SizedBox.shrink(),
               Padding(
-                padding: EdgeInsets.only(left: 54.w, right: 51.w),
+                padding: EdgeInsets.only(left: wi(54), right: wi(51)),
                 child: Text(onboarding3,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -135,7 +135,7 @@ class OnBoarding3 extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6.r)),
+                        borderRadius: BorderRadius.circular(6)),
                     fixedSize: const Size(double.infinity, 48)),
                 child: Center(
                   child: Text(

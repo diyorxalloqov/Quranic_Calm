@@ -1,4 +1,3 @@
-import 'package:quranic_calm/core/constants/app/app_colors.dart';
 import 'package:quranic_calm/modules/global/imports/app_imports.dart';
 
 class LanguagePage extends StatefulWidget {
@@ -59,7 +58,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: wi(12), vertical: he(13)),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12.r),
+                                  borderRadius: BorderRadius.circular(12),
                                   color: selectedLang == 'uzbek'
                                       ? mainGreenColor.withOpacity(0.2)
                                       : context.isDark
@@ -96,7 +95,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: wi(12), vertical: he(13)),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12.r),
+                                  borderRadius: BorderRadius.circular(12),
                                   color: selectedLang == 'english'
                                       ? mainGreenColor.withOpacity(0.2)
                                       : context.isDark
@@ -132,10 +131,10 @@ class _SleepTimePageState extends State<LanguagePage> {
                             width: double.infinity,
                             padding: EdgeInsets.symmetric(
                                 horizontal: wi(12), vertical: he(25)),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(24.r),
-                                topRight: Radius.circular(24.r),
+                                topLeft: Radius.circular(24),
+                                topRight: Radius.circular(24),
                               ),
                             ),
                           )
@@ -145,7 +144,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        bottom: context.bottom / 9 + 81, right: wi(32)),
+                        bottom: context.bottom / 9 + 61, right: wi(32)),
                     child: Column(
                       children: [
                         ElevatedButton(
@@ -161,7 +160,7 @@ class _SleepTimePageState extends State<LanguagePage> {
                                 elevation: 0,
                                 shadowColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.r)),
+                                    borderRadius: BorderRadius.circular(4)),
                                 fixedSize: const Size(double.infinity, 48)),
                             child: Center(
                               child: Text(
@@ -169,34 +168,6 @@ class _SleepTimePageState extends State<LanguagePage> {
                                 style: TextStyle(
                                     fontSize: AppSizes.size_20,
                                     color: Colors.white,
-                                    fontWeight: AppFontWeight.w_600,
-                                    fontFamily:
-                                        AppfontFamily.abhaya.fontFamily),
-                              ),
-                            )),
-                        SizedBox(height: he(24)),
-                        ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                shadowColor: Colors.transparent,
-                                backgroundColor: Colors.transparent,
-                                shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: context.isDark
-                                            ? primaryColorBlack
-                                            : Colors.black,
-                                        width: 1),
-                                    borderRadius: BorderRadius.circular(4.r)),
-                                fixedSize: const Size(double.infinity, 48)),
-                            child: Center(
-                              child: Text(
-                                startMediatations,
-                                style: TextStyle(
-                                    fontSize: AppSizes.size_20,
-                                    color: context.isDark
-                                        ? primaryColorBlack
-                                        : mainTextColor,
                                     fontWeight: AppFontWeight.w_600,
                                     fontFamily:
                                         AppfontFamily.abhaya.fontFamily),

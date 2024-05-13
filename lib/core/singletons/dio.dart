@@ -16,4 +16,8 @@ class DioSettings {
   );
 
   BaseOptions get dioBaseOptions => _dioBaseOptions;
+  Dio get dio {
+    var dio1 = Dio(_dioBaseOptions)..interceptors.add(InterceptorsWrapper());
+    return dio1;
+  }
 }

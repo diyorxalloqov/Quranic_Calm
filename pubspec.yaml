@@ -45,12 +45,22 @@ dependencies:
   path: ^1.9.0
   adaptive_theme: ^3.6.0
   flutter_bloc: ^8.1.5
-  flutter_screenutil: ^5.9.0
   flutter_svg: ^2.0.10+1
   persistent_bottom_nav_bar: ^5.0.2
   dartz: ^0.10.1
   equatable: ^2.0.5
-
+  just_audio: any
+  audio_service: ^0.18.13
+  # just_audio_background: any
+  just_audio_cache: any
+  connectivity_plus: ^5.0.2
+  flutter_local_notifications: ^17.1.1
+  flutter_timezone: ^1.0.8
+  timezone: ^0.9.3
+  cached_network_image: ^3.3.1
+  auto_start_flutter: ^0.1.1
+  fluttertoast: ^8.2.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
